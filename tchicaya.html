@@ -1,15 +1,156 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
-    <!-- Ajouter les liens pour Bootstrap et Font Awesome -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon Profil</title>
+
+    <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <!-- Font Awesome CSS -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css">
-    <link rel="stylesheet" type="text/css" href="styles.css">
+    <!-- jQuery and jQuery Color Plugin -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://code.jquery.com/color/jquery.color.plus-names-2.1.2.min.js"></script>
+    
+    <style>
+      body {
+    background: url('R.jpeg') no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    font-family: Arial, sans-serif;
+}
+
+/* Navbar Styles */
+.navbar {
+    transform: perspective(1000px) rotateX(30deg);
+    transform-origin: center bottom;
+    box-shadow: 0px 10px 30px rgba(0,0,0,0.6);
+}
+
+.navbar .nav-item {
+    transform-style: preserve-3d;
+}
+
+.navbar .nav-link {
+    color: white !important;
+    transition: background-color .3s, transform .3s;
+}
+
+.navbar .nav-link:hover {
+    background-color: #111 !important;
+    transform: rotateY(360deg);
+}
+
+/* Profile Section Styles */
+.profile {
+    color: white;
+    padding: 20px 0;
+    margin-bottom: 30px;
+    border-radius: 15px;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.profile-image {
+    width: 200px;
+    height: 200px;
+    margin: 0 auto 20px;
+    border-radius: 50%;
+    overflow: hidden;
+    box-shadow: 0px 10px 30px rgba(0,0,0,0.6);
+    transform-style: preserve-3d;
+    transition: transform .3s;
+}
+
+.profile-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.profile-image:hover {
+    transform: rotateY(360deg) scale(1.1);
+}
+
+.profile h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+.profile p {
+    font-size: 1.2em;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+/* Contact Section Styles */
+.contact {
+    color: white;
+    padding: 20px 0;
+    margin-bottom: 30px;
+    border-radius: 15px;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.contact h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+.contact p {
+    font-size: 1.2em;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.social-links a {
+    color: white;
+    font-size: 1.5em;
+}
+
+/* Footer Styles */
+@import url('https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css');
+
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #343a40;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    transform: perspective(1000px) rotateX(30deg);
+    transform-origin: center bottom;
+    box-shadow: 0px 10px 30px rgba(0,0,0,0.6);
+}
+
+.copyright {
+    margin: 0;
+    line-height: 1.5;
+    transform-style: preserve-3d;
+    transition: background-color .3s, transform .3s;
+}
+
+.copyright:hover {
+    background-color: #111;
+    transform: rotateY(360deg);
+}
+
+    </style>
 </head>
 <body>
-   <!-- nav bar--> 
+
+    <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
             <ul class="navbar-nav mr-auto">
@@ -29,164 +170,46 @@
                     <a class="nav-link" href="formation.html"><i class="fas fa-graduation-cap"></i> Formation</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="projet-realisation.html"><i class="fas fa-project-diagram"></i> Projet & Réalisation</a>
+                    <a class="nav-link" href="projet-realisation.html"><i class="fas fa-project-diagram"></i> Projets & Réalisations</a>
                 </li>
             </ul>
         </div>
     </nav>
-       <!--fin nav bar-->
-       <!-- name container -->
-    <div class="name-container">
-        <div class="name">
-            <span>T</span>
-            <span>H</span>
-            <span>I</span>
-            <span>C</span>
-            <span>A</span>
-            <span>Y</span>
-            <span>A</span>
-            <span>,</span>
-            <br>
-            <span>M</span>
-            <span>A</span>
-            <span>C</span>
-            <span>K</span>
-            <span>L</span>
-            <span>Y</span>
-            <span>,</span>
-            <br>
-            <span>L</span>
-            <span>O</span>
-            <span>I</span>
-            <span>C</span>
-            <span>K</span>
-        </div>
-        <div class="role">
-            <span>Développeur Full Stack</span>
-        </div>
-    </div>
-    <!-- end name container -->
 
-       <!--footer-->
-       <footer class="footer">
-        <div class="container text-center">
-            <p class="copyright animated">&copy; <span id="year"></span> Thicaya Mackly Loïck - Tous droits réservés</p>
+    <!-- Profile Section -->
+   <!-- Profile Section -->
+   <section class="profile" id="profile">
+    <div class="profile-image">
+        <img src="22228121_495361630819172_1470992078011208297_n.jpg" alt="Profile picture" />
+    </div>
+    <h2>Profil personnel</h2>
+    <p>Je suis un étudiant passionné par les nouvelles technologies, à la recherche de nouvelles opportunités dans le domaine. J'ai un intérêt marqué pour les activités sportives, la musique, la lecture et les voyages. J'ai développé un sens du service à travers différentes expériences et j'ai acquis des compétences en travail d'équipe, en ponctualité et en utilisation des outils informatiques. Grâce à certains projets, j'ai développé des compétences telles que la capacité à me surpasser, à travailler en équipe de manière synchronisée, à assigner des tâches aux membres de l'équipe et à assurer le suivi du projet jusqu'à sa réalisation.</p>
+    <div class="emoji"><i class="fas fa-smile"></i></div>
+</section>
+
+<!-- Contact Section -->
+<section class="contact" id="contact">
+    <h2>Coordonnées</h2>
+    <p>Téléphone: 065961559</p>
+    <p>Adresse: Raffinerie, rue Mikossa en face du foyer Coraf</p>
+    <p>Email: tchicaya.mackly@gmail.com</p>
+    <div class="social-links">
+        <a href="mailto:macklyloickabsolue@gmail.com"><i class="fas fa-envelope"></i></a>
+        <a href="https://www.linkedin.com/in/mackly-loick-tchicaya-928950192/" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://discord.com/channels/@memackly45#4329" target="_blank"><i class="fab fa-discord"></i></a>
+        <a href="https://github.com/mackly45" target="_blank"><i class="fab fa-github"></i></a>
+        <a href="https://codepen.io/mackly45" target="_blank"><i class="fab fa-codepen"></i></a>
+        <a href="https://www.root-me.org/mackly45?lang=fr#9f83ab092080b26a112d5ca4e2602f0d" target="_blank"><i class="fas fa-user-secret"></i></a>
+    </div>
+    
+</section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p class="copyright">© 2023 Tous les droits réservés.</p>
         </div>
     </footer>
-<!--fin footer-->
 
-
-<!-- script navbar-->
-    <script>
-    $(document).ready(function(){
-        $(".nav-item").hover(
-            function(){
-                $(this).animate({backgroundColor: '#343434'}, 'slow');
-                $(this).addClass('animated pulse');
-            },
-            function(){
-                $(this).animate({backgroundColor: '#000'}, 'slow');
-                $(this).removeClass('animated pulse');
-            }
-        );
-    });
-/***** fin script navbar*********/
-document.getElementById('year').innerHTML = new Date().getFullYear();
-        $(".footer").hover(
-            function(){
-                $(".copyright").addClass('pulse');
-            },
-            function(){
-                $(".copyright").removeClass('pulse');
-            }
-        );/*fin script footer*/
-        window.addEventListener('DOMContentLoaded', (event) => {
-
-const nameContainer = document.querySelector('.name-container');
-
-// Array of programming languages symbols
-const languages = ['HTML', 'CSS', 'JS', 'C++', 'C#', 'Python', 'Java', 'PHP'];
-
-// Create circles, triangles, squares, diamonds and language symbols
-for (let i = 0; i < 20; i++) {
-  const circle = document.createElement('div');
-  circle.className = 'background-element circle';
-  circle.style.animation = `moveAround ${10 + Math.random() * 20}s linear infinite`;
-  nameContainer.appendChild(circle);
-
-  const triangle = document.createElement('div');
-  triangle.className = 'background-element triangle';
-  triangle.style.animation = `moveAround ${10 + Math.random() * 20}s linear infinite`;
-  nameContainer.appendChild(triangle);
-
-  const square = document.createElement('div');
-  square.className = 'background-element square';
-  square.style.animation = `moveAround ${10 + Math.random() * 20}s linear infinite`;
-  nameContainer.appendChild(square);
-
-  const diamond = document.createElement('div');
-  diamond.className = 'background-element diamond';
-  diamond.style.animation = `moveAround ${10 + Math.random() * 20}s linear infinite`;
-  nameContainer.appendChild(diamond);
-
-  const langSymbol = document.createElement('div');
-  langSymbol.className = 'background-element language-symbol';
-  langSymbol.textContent = languages[Math.floor(Math.random() * languages.length)];
-  langSymbol.style.animation = `moveAround ${10 + Math.random() * 20}s linear infinite`;
-  nameContainer.appendChild(langSymbol);
-}
-
-// Randomly position the background elements
-const backgroundElements = nameContainer.querySelectorAll('.background-element');
-backgroundElements.forEach(element => {
-  element.style.top = `${Math.random() * 90}%`;
-  element.style.left = `${Math.random() * 90}%`;
-});
-
-// Select all elements with class name or role
-const nameElements = document.querySelectorAll('.name span');
-const roleElements = document.querySelectorAll('.role span');
-
-// Increase opacity every 300ms
-nameElements.forEach((elem, index) => {
-    setTimeout(() => {
-        elem.style.opacity = '1';
-    }, index * 300);
-});
-
-// Start after nameElements finished
-roleElements.forEach((elem, index) => {
-    setTimeout(() => {
-        elem.style.opacity = '1';
-    }, (index + nameElements.length) * 300);
-});
-
-// Add or remove class 'active' to sections on click
-const sections = document.querySelectorAll('section');
-sections.forEach(section => {
-    section.addEventListener('click', () => {
-        if(section.classList.contains('active')) {
-            section.style.opacity = '0';
-            section.classList.remove('active');
-        } else {
-            section.style.opacity = '1';
-            section.classList.add('active');
-        }
-    });
-});
-
-// Add 'clicked' class to small circles on click
-const smallCircles = document.querySelectorAll('.small-circle');
-smallCircles.forEach((circle) => {
-  circle.addEventListener('click', () => {
-    circle.classList.add('clicked');
-  });
-});
-});
-
-
-
-
-</script>
 </body>
 </html>
