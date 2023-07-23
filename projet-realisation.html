@@ -9,109 +9,62 @@
     <!-- Font Awesome CSS -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css">
     <style>
+           body {
+            background: url('R.jpeg') no-repeat center center fixed;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+            font-family: Arial, sans-serif;
+        }
         /* Navbar Styles */
         
         .navbar {
-            background-color: #333;
-            padding: 10px 0;
-            color: #fff;
-            text-align: center;
+            transform: perspective(1000px) rotateX(30deg);
+            transform-origin: center bottom;
             box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.6);
         }
         
-        .navbar .container {
-            display: flex;
-            justify-content: center;
+        .navbar .nav-item {
+            transform-style: preserve-3d;
         }
         
-        .navbar-nav {
-            list-style: none;
-            margin: 0;
-            padding: 0;
+        .navbar .nav-link {
+            color: white !important;
+            transition: background-color .3s, transform .3s;
         }
         
-        .nav-item {
-            display: inline-block;
-            margin: 0 10px;
-        }
-        
-        .nav-link {
-            color: #fff;
-            text-decoration: none;
-            font-size: 18px;
-            padding: 10px;
-            border-bottom: 2px solid transparent;
-        }
-        
-        .nav-link.active,
-        .nav-link:hover {
-            border-bottom: 2px solid #fff;
-        }
-        /* Projets & Réalisations Section */
-        
-        .projects {
-            padding: 40px;
-        }
-        
-        .project {
-            margin-bottom: 30px;
-        }
-        
-        .project-image {
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .project-image img {
-            width: 100%;
-            height: auto;
-        }
-        
-        .btn-description {
-            position: absolute;
-            bottom: 20px;
-            right: 20px;
-            padding: 8px 15px;
-            background-color: #333;
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        
-        .project-description {
-            display: none;
-            padding: 20px;
-            background-color: rgba(0, 0, 0, 0.8);
-            color: #fff;
-            border-radius: 5px;
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
-        }
-        
-        .project-description h3 {
-            margin-bottom: 10px;
+        .navbar .nav-link:hover {
+            background-color: #111 !important;
+            transform: rotateY(360deg);
         }
         /* Footer Styles */
         
+        @import url('https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css');
         .footer {
             position: fixed;
             left: 0;
             bottom: 0;
             width: 100%;
             background-color: #343a40;
-            color: #fff;
+            color: white;
             text-align: center;
             padding: 10px 0;
+            transform: perspective(1000px) rotateX(30deg);
+            transform-origin: center bottom;
             box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.6);
         }
         
-        .footer-text {
+        .copyright {
             margin: 0;
+            line-height: 1.5;
+            transform-style: preserve-3d;
+            transition: background-color .3s, transform .3s;
+        }
+        
+        .copyright:hover {
+            background-color: #111;
+            transform: rotateY(360deg);
         }
     </style>
 </head>
