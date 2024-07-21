@@ -1,80 +1,147 @@
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projets & Réalisations</title>
-    <link rel="stylesheet" href="styles.css">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
     <!-- Font Awesome CSS -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css">
+
+    <!-- Custom CSS -->
     <style>
-           body {
-            background: url('R.jpeg') no-repeat center center fixed;
-            -webkit-background-size: cover;
-            -moz-background-size: cover;
-            -o-background-size: cover;
+        body {
+            background: url('background.jpg') no-repeat center center fixed;
             background-size: cover;
-            font-family: Arial, sans-serif;
+            font-family: 'Arial', sans-serif;
+            color: #fff;
+            padding-top: 60px;
         }
-        /* Navbar Styles */
-        
+
         .navbar {
-            transform: perspective(1000px) rotateX(30deg);
-            transform-origin: center bottom;
+            background-color: rgba(0, 0, 0, 0.8);
             box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.6);
         }
-        
-        .navbar .nav-item {
-            transform-style: preserve-3d;
-        }
-        
+
         .navbar .nav-link {
-            color: white !important;
+            color: #fff !important;
             transition: background-color .3s, transform .3s;
         }
-        
+
         .navbar .nav-link:hover {
-            background-color: #111 !important;
-            transform: rotateY(360deg);
+            background-color: #555 !important;
+            transform: scale(1.1);
         }
-        /* Footer Styles */
-        
-        @import url('https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css');
-        .footer {
-            position: fixed;
-            left: 0;
-            bottom: 0;
+
+        .projects {
+            padding: 50px 0;
+            background: rgba(0, 0, 0, 0.8);
+            border-radius: 15px;
+            box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.6);
+            margin: 30px 0;
+            transition: transform .3s;
+        }
+
+        .projects:hover {
+            transform: scale(1.05);
+        }
+
+        h2 {
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .project {
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .project-image {
+            position: relative;
+        }
+
+        .project-image img {
             width: 100%;
-            background-color: #343a40;
+            border-radius: 15px;
+            transition: transform .3s;
+        }
+
+        .project-image:hover img {
+            transform: scale(1.1);
+        }
+
+        .btn-description {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: rgba(0, 0, 0, 0.7);
+            border: none;
+            color: #fff;
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color .3s;
+        }
+
+        .btn-description:hover {
+            background-color: rgba(255, 255, 255, 0.7);
+            color: #000;
+        }
+
+        .project-description {
+            display: none;
+            background: rgba(0, 0, 0, 0.9);
+            padding: 20px;
+            border-radius: 15px;
+            margin-top: 10px;
+        }
+
+        .footer {
+            background-color: rgba(0, 0, 0, 0.8);
             color: white;
             text-align: center;
             padding: 10px 0;
-            transform: perspective(1000px) rotateX(30deg);
-            transform-origin: center bottom;
             box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.6);
         }
-        
-        .copyright {
+
+        .footer p {
             margin: 0;
             line-height: 1.5;
-            transform-style: preserve-3d;
-            transition: background-color .3s, transform .3s;
         }
-        
-        .copyright:hover {
-            background-color: #111;
-            transform: rotateY(360deg);
+
+        .project {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+
+        .project-image, .project-description {
+            flex: 1;
+            min-width: 300px;
+            margin: 10px;
+        }
+
+        .project-description h3 {
+            font-size: 1.8em;
+            margin-bottom: 15px;
+        }
+
+        .project-description p {
+            font-size: 1.2em;
+            text-align: left;
         }
     </style>
 </head>
-
 <body>
-
     <!-- Navbar -->
-    <nav class="navbar">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <div class="container">
-            <ul class="navbar-nav">
+            <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
                     <a class="nav-link" href="tchicaya.html"><i class="fas fa-user"></i> Profil</a>
                 </li>
@@ -90,7 +157,7 @@
                 <li class="nav-item">
                     <a class="nav-link" href="formation.html"><i class="fas fa-graduation-cap"></i> Formation</a>
                 </li>
-                <li class="nav-item active">
+                <li class="nav-item">
                     <a class="nav-link" href="projet-realisation.html"><i class="fas fa-project-diagram"></i> Projets & Réalisations</a>
                 </li>
             </ul>
@@ -99,35 +166,120 @@
 
     <!-- Projets & Réalisations Section -->
     <section class="projects" id="projects">
-        <h2>Projets & Réalisations</h2>
+        <div class="container">
+            <h2>Projets & Réalisations</h2>
 
-        <!-- Projet 1 -->
-        <div class="project">
-            <div class="project-image" onmouseover="showDescription(1)" onmouseout="hideDescription(1)">
-                <img src="projet1.jpg" alt="Projet 1">
-                <button class="btn-description" onclick="toggleDescription(1)">Description</button>
+            <!-- Projet 1 -->
+            <div class="project">
+                <div class="project-image" onmouseover="showDescription(1)" onmouseout="hideDescription(1)">
+                    <img src="projet1.jpg" alt="Projet de Distinction des Races de Chiens">
+                    <button class="btn-description" onclick="toggleDescription(1)">Description</button>
+                </div>
+                <div class="project-description" id="description-1">
+                    <h3>Projet de Distinction des Races de Chiens par Image</h3>
+                    <p>Ce projet utilise l'intelligence artificielle et le framework Blazor Server de Microsoft pour créer une application capable d'identifier les races de chiens à partir d'images. J'ai travaillé sur :</p>
+                    <ul>
+                        <li>La collecte et le nettoyage des données</li>
+                        <li>La conception du modèle de reconnaissance d'images</li>
+                        <li>L'intégration de l'interface utilisateur avec Blazor Server</li>
+                    </ul>
+                </div>
             </div>
-            <div class="project-description" id="description-1">
-                <h3>Projet 1</h3>
-                <p>Une description détaillée du Projet 1...</p>
+
+            <!-- Projet 2 -->
+            <div class="project">
+                <div class="project-image" onmouseover="showDescription(2)" onmouseout="hideDescription(2)">
+                    <img src="projet2.jpg" alt="Projet sur la Notoriété d'une Page sur les Réseaux Sociaux">
+                    <button class="btn-description" onclick="toggleDescription(2)">Description</button>
+                </div>
+                <div class="project-description" id="description-2">
+                    <h3>Projet sur la Notoriété d'une Page sur les Réseaux Sociaux</h3>
+                    <p>Dans ce projet, j'ai analysé la visibilité de plusieurs pages sur les réseaux sociaux en utilisant :</p>
+                    <ul>
+                        <li>Des techniques de machine learning et d'analyse de données</li>
+                        <li>L'analyse des tendances et des interactions</li>
+                    </ul>
+                    <p>J'ai proposé des stratégies de publication pour améliorer la notoriété et l'engagement des utilisateurs.</p>
+                </div>
+            </div>
+
+            <!-- Projet 3 -->
+            <div class="project">
+                <div class="project-image" onmouseover="showDescription(3)" onmouseout="hideDescription(3)">
+                    <img src="projet3.jpg" alt="Création d'une Page Web d'Inscription et de Connexion">
+                    <button class="btn-description" onclick="toggleDescription(3)">Description</button>
+                </div>
+                <div class="project-description" id="description-3">
+                    <h3>Création d'une Page Web d'Inscription et de Connexion</h3>
+                    <p>J'ai développé une interface utilisateur simple et efficace pour l'inscription et la connexion des utilisateurs en utilisant :</p>
+                    <ul>
+                        <li>HTML</li>
+                        <li>CSS</li>
+                        <li>Bootstrap</li>
+                    </ul>
+                    <p>Ce projet m'a permis de renforcer mes compétences en développement front-end et en design d'interfaces utilisateur.</p>
+                </div>
+            </div>
+
+            <!-- Projet 4 -->
+            <div class="project">
+                <div class="project-image" onmouseover="showDescription(4)" onmouseout="hideDescription(4)">
+                    <img src="projet4.jpg" alt="Développement d'une Application de Gestion des Tâches">
+                    <button class="btn-description" onclick="toggleDescription(4)">Description</button>
+                </div>
+                <div class="project-description" id="description-4">
+                    <h3>Développement d'une Application de Gestion des Tâches en Python</h3>
+                    <p>Ce projet consistait à développer une application permettant de gérer les tâches quotidiennes des utilisateurs. L'application est construite en Python et utilise une base de données SQLite pour stocker les informations des tâches. Elle inclut des fonctionnalités de :</p>
+                    <ul>
+                        <li>Création</li>
+                        <li>Modification</li>
+                        <li>Suppression</li>
+                        <li>Consultation des tâches</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Projet 5 -->
+            <div class="project">
+                <div class="project-image" onmouseover="showDescription(5)" onmouseout="hideDescription(5)">
+                    <img src="projet5.jpg" alt="Réalisation d'une Calculatrice en Base 36 en C++">
+                    <button class="btn-description" onclick="toggleDescription(5)">Description</button>
+                </div>
+                <div class="project-description" id="description-5">
+                    <h3>Réalisation d'une Calculatrice en Base 36 en C++</h3>
+                    <p>J'ai développé une calculatrice capable de réaliser des opérations arithmétiques en base 36 en utilisant le langage C++. Ce projet m'a permis de :</p>
+                    <ul>
+                        <li>Renforcer mes compétences en programmation C++</li>
+                        <li>Mieux comprendre la manipulation des bases numériques</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Projet 6 -->
+            <div class="project">
+                <div class="project-image" onmouseover="showDescription(6)" onmouseout="hideDescription(6)">
+                    <img src="projet6.jpg" alt="Création d'un Cahier des Charges pour un Site Web de Commerce Électronique">
+                    <button class="btn-description" onclick="toggleDescription(6)">Description</button>
+                </div>
+                <div class="project-description" id="description-6">
+                    <h3>Création d'un Cahier des Charges pour un Site Web de Commerce Électronique</h3>
+                    <p>J'ai élaboré un cahier des charges détaillé pour la création d'un site web de commerce électronique. Ce document incluait :</p>
+                    <ul>
+                        <li>Les spécifications fonctionnelles et techniques</li>
+                        <li>Les exigences en matière de design et d'expérience utilisateur</li>
+                        <li>Les critères de performance et de sécurité</li>
+                    </ul>
+                </div>
             </div>
         </div>
-
-        <!-- Projet 2 -->
-        <div class="project">
-            <div class="project-image" onmouseover="showDescription(2)" onmouseout="hideDescription(2)">
-                <img src="projet2.jpg" alt="Projet 2">
-                <button class="btn-description" onclick="toggleDescription(2)">Description</button>
-            </div>
-            <div class="project-description" id="description-2">
-                <h3>Projet 2</h3>
-                <p>Une description détaillée du Projet 2...</p>
-            </div>
-        </div>
-
-        <!-- Ajoutez d'autres projets de la même manière (en changeant les numéros) -->
-
     </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p class="footer-text">© 2023 Tous les droits réservés.</p>
+        </div>
+    </footer>
 
     <script>
         function showDescription(projectNumber) {
@@ -148,15 +300,29 @@
                 description.style.display = "block";
             }
         }
+
+        // Automatic scrolling
+        var currentProject = 1;
+        var totalProjects = 6;
+
+        function autoScrollProjects() {
+            toggleDescription(currentProject);
+            currentProject++;
+            if (currentProject > totalProjects) {
+                currentProject = 1;
+            }
+            toggleDescription(currentProject);
+            setTimeout(autoScrollProjects, 5000); // Change every 5 seconds
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+            autoScrollProjects();
+        });
     </script>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <p class="footer-text">© 2023 Tous les droits réservés.</p>
-        </div>
-    </footer>
-
+    <!-- JS, Popper.js, and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </body>
-
 </html>

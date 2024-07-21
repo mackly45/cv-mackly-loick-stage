@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mon Profil</title>
+    <title>Compétences</title>
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
@@ -16,17 +16,17 @@
 
     <!-- jQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    
+
     <style>
         body {
-            background: url('R.jpeg') no-repeat center center fixed; 
+            background: url('background.jpg') no-repeat center center fixed;
             background-size: cover;
             font-family: 'Arial', sans-serif;
             color: #fff;
         }
 
         .navbar {
-            background-color: rgba(0, 0, 0, 0.7);
+            background-color: rgba(0, 0, 0, 0.8);
             box-shadow: 0px 10px 30px rgba(0,0,0,0.6);
         }
 
@@ -40,8 +40,8 @@
             transform: scale(1.1);
         }
 
-        .profile, .contact {
-            background: rgba(0, 0, 0, 0.6);
+        .skills {
+            background: rgba(0, 0, 0, 0.8);
             border-radius: 15px;
             padding: 30px;
             margin: 30px 0;
@@ -49,28 +49,8 @@
             transition: transform .3s;
         }
 
-        .profile:hover, .contact:hover {
+        .skills:hover {
             transform: scale(1.05);
-        }
-
-        .profile-image {
-            width: 200px;
-            height: 200px;
-            margin: 0 auto 20px;
-            border-radius: 50%;
-            overflow: hidden;
-            box-shadow: 0px 10px 30px rgba(0,0,0,0.6);
-            transition: transform .3s;
-        }
-
-        .profile-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .profile-image:hover {
-            transform: rotateY(360deg) scale(1.1);
         }
 
         h2 {
@@ -79,32 +59,34 @@
             text-align: center;
         }
 
-        p {
-            font-size: 1.2em;
-            line-height: 1.5;
-            text-align: center;
+        .skill-item {
+            margin-bottom: 20px;
         }
 
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-top: 20px;
+        .skill-item h3 {
+            font-size: 1.8em;
+            margin-bottom: 10px;
         }
 
-        .social-links a {
-            color: white;
-            font-size: 1.5em;
-            transition: color .3s, transform .3s;
+        .progress {
+            background-color: #444;
+            border-radius: 20px;
+            height: 20px;
+            overflow: hidden;
+            margin-bottom: 10px;
         }
 
-        .social-links a:hover {
-            color: #ff9800;
-            transform: scale(1.2);
+        .progress-bar {
+            background-color: #ff9800;
+            transition: width 1s ease-in-out;
+        }
+
+        .progress-bar-striped {
+            background-image: linear-gradient(45deg, rgba(255, 255, 255, .15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .15) 50%, rgba(255, 255, 255, .15) 75%, transparent 75%, transparent);
         }
 
         .footer {
-            background-color: rgba(0, 0, 0, 0.7);
+            background-color: rgba(0, 0, 0, 0.8);
             color: white;
             text-align: center;
             padding: 10px 0;
@@ -148,28 +130,40 @@
         </div>
     </nav>
 
-    <!-- Profile Section -->
-    <section class="profile animate__animated animate__fadeIn">
-        <div class="profile-image">
-            <img src="22228121_495361630819172_1470992078011208297_n.jpg" alt="Profile picture" />
-        </div>
-        <h2>Profil personnel</h2>
-        <p>Je suis un étudiant passionné par les nouvelles technologies, à la recherche de nouvelles opportunités dans le domaine. J'ai un intérêt marqué pour les activités sportives, la musique, la lecture et les voyages. J'ai développé un sens du service à travers différentes expériences et j'ai acquis des compétences en travail d'équipe, en ponctualité et en utilisation des outils informatiques. Grâce à certains projets, j'ai développé des compétences telles que la capacité à me surpasser, à travailler en équipe de manière synchronisée, à assigner des tâches aux membres de l'équipe et à assurer le suivi du projet jusqu'à sa réalisation.</p>
-    </section>
-
-    <!-- Contact Section -->
-    <section class="contact animate__animated animate__fadeIn">
-        <h2>Coordonnées</h2>
-        <p>Téléphone: 065961559</p>
-        <p>Adresse: Raffinerie, rue Mikossa en face du foyer Coraf</p>
-        <p>Email: tchicaya.mackly@gmail.com</p>
-        <div class="social-links">
-            <a href="mailto:macklyloickabsolue@gmail.com"><i class="fas fa-envelope"></i></a>
-            <a href="https://www.linkedin.com/in/mackly-loick-tchicaya-928950192/" target="_blank"><i class="fab fa-linkedin"></i></a>
-            <a href="https://discord.com/channels/@memackly45#4329" target="_blank"><i class="fab fa-discord"></i></a>
-            <a href="https://github.com/mackly45" target="_blank"><i class="fab fa-github"></i></a>
-            <a href="https://codepen.io/mackly45" target="_blank"><i class="fab fa-codepen"></i></a>
-            <a href="https://www.root-me.org/mackly45?lang=fr#9f83ab092080b26a112d5ca4e2602f0d" target="_blank"><i class="fas fa-user-secret"></i></a>
+    <!-- Skills Section -->
+    <section class="skills animate__animated animate__fadeIn">
+        <div class="container">
+            <h2>Compétences</h2>
+            <div class="skill-item">
+                <h3>Développement Web</h3>
+                <div class="progress">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 90%">90%</div>
+                </div>
+            </div>
+            <div class="skill-item">
+                <h3>Développement Mobile</h3>
+                <div class="progress">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 80%">80%</div>
+                </div>
+            </div>
+            <div class="skill-item">
+                <h3>Intelligence Artificielle</h3>
+                <div class="progress">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 75%">75%</div>
+                </div>
+            </div>
+            <div class="skill-item">
+                <h3>Analyse de Données</h3>
+                <div class="progress">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 85%">85%</div>
+                </div>
+            </div>
+            <div class="skill-item">
+                <h3>Gestion de Projet</h3>
+                <div class="progress">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 70%">70%</div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -192,12 +186,12 @@
                 }
             );
 
-            $('.profile, .contact').hover(
+            $('.skill-item').hover(
                 function() {
-                    $(this).addClass('animate__animated animate__heartBeat');
+                    $(this).addClass('animate__animated animate__flash');
                 },
                 function() {
-                    $(this).removeClass('animate__animated animate__heartBeat');
+                    $(this).removeClass('animate__animated animate__flash');
                 }
             );
         });

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mon Profil</title>
+    <title>Formation</title>
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
@@ -16,17 +16,17 @@
 
     <!-- jQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    
+
     <style>
         body {
-            background: url('R.jpeg') no-repeat center center fixed; 
+            background: url('background.jpg') no-repeat center center fixed;
             background-size: cover;
             font-family: 'Arial', sans-serif;
             color: #fff;
         }
 
         .navbar {
-            background-color: rgba(0, 0, 0, 0.7);
+            background-color: rgba(0, 0, 0, 0.8);
             box-shadow: 0px 10px 30px rgba(0,0,0,0.6);
         }
 
@@ -40,8 +40,8 @@
             transform: scale(1.1);
         }
 
-        .profile, .contact {
-            background: rgba(0, 0, 0, 0.6);
+        .education-section {
+            background: rgba(0, 0, 0, 0.8);
             border-radius: 15px;
             padding: 30px;
             margin: 30px 0;
@@ -49,28 +49,8 @@
             transition: transform .3s;
         }
 
-        .profile:hover, .contact:hover {
+        .education-section:hover {
             transform: scale(1.05);
-        }
-
-        .profile-image {
-            width: 200px;
-            height: 200px;
-            margin: 0 auto 20px;
-            border-radius: 50%;
-            overflow: hidden;
-            box-shadow: 0px 10px 30px rgba(0,0,0,0.6);
-            transition: transform .3s;
-        }
-
-        .profile-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .profile-image:hover {
-            transform: rotateY(360deg) scale(1.1);
         }
 
         h2 {
@@ -79,32 +59,21 @@
             text-align: center;
         }
 
-        p {
+        .education-item {
+            margin-bottom: 20px;
+        }
+
+        .education-item h3 {
+            font-size: 1.8em;
+            margin-bottom: 10px;
+        }
+
+        .education-item p {
             font-size: 1.2em;
-            line-height: 1.5;
-            text-align: center;
-        }
-
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-top: 20px;
-        }
-
-        .social-links a {
-            color: white;
-            font-size: 1.5em;
-            transition: color .3s, transform .3s;
-        }
-
-        .social-links a:hover {
-            color: #ff9800;
-            transform: scale(1.2);
         }
 
         .footer {
-            background-color: rgba(0, 0, 0, 0.7);
+            background-color: rgba(0, 0, 0, 0.8);
             color: white;
             text-align: center;
             padding: 10px 0;
@@ -148,28 +117,48 @@
         </div>
     </nav>
 
-    <!-- Profile Section -->
-    <section class="profile animate__animated animate__fadeIn">
-        <div class="profile-image">
-            <img src="22228121_495361630819172_1470992078011208297_n.jpg" alt="Profile picture" />
-        </div>
-        <h2>Profil personnel</h2>
-        <p>Je suis un étudiant passionné par les nouvelles technologies, à la recherche de nouvelles opportunités dans le domaine. J'ai un intérêt marqué pour les activités sportives, la musique, la lecture et les voyages. J'ai développé un sens du service à travers différentes expériences et j'ai acquis des compétences en travail d'équipe, en ponctualité et en utilisation des outils informatiques. Grâce à certains projets, j'ai développé des compétences telles que la capacité à me surpasser, à travailler en équipe de manière synchronisée, à assigner des tâches aux membres de l'équipe et à assurer le suivi du projet jusqu'à sa réalisation.</p>
-    </section>
-
-    <!-- Contact Section -->
-    <section class="contact animate__animated animate__fadeIn">
-        <h2>Coordonnées</h2>
-        <p>Téléphone: 065961559</p>
-        <p>Adresse: Raffinerie, rue Mikossa en face du foyer Coraf</p>
-        <p>Email: tchicaya.mackly@gmail.com</p>
-        <div class="social-links">
-            <a href="mailto:macklyloickabsolue@gmail.com"><i class="fas fa-envelope"></i></a>
-            <a href="https://www.linkedin.com/in/mackly-loick-tchicaya-928950192/" target="_blank"><i class="fab fa-linkedin"></i></a>
-            <a href="https://discord.com/channels/@memackly45#4329" target="_blank"><i class="fab fa-discord"></i></a>
-            <a href="https://github.com/mackly45" target="_blank"><i class="fab fa-github"></i></a>
-            <a href="https://codepen.io/mackly45" target="_blank"><i class="fab fa-codepen"></i></a>
-            <a href="https://www.root-me.org/mackly45?lang=fr#9f83ab092080b26a112d5ca4e2602f0d" target="_blank"><i class="fas fa-user-secret"></i></a>
+    <!-- Formation Section -->
+    <section class="education-section animate__animated animate__fadeIn">
+        <div class="container">
+            <h2>Formation</h2>
+            <div class="row">
+                <div class="col-md-6 education-item">
+                    <div class="card bg-dark text-white">
+                        <div class="card-body">
+                            <h3 class="card-title">Deuxième année de Data Full Stack</h3>
+                            <h5 class="card-subtitle mb-2 text-muted">Université ESCIC - 2023-2024</h5>
+                            <p class="card-text">Formation approfondie dans le développement full stack avec une spécialisation en traitement des données. Acquis des compétences avancées en programmation et en utilisation des outils de data science.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 education-item">
+                    <div class="card bg-dark text-white">
+                        <div class="card-body">
+                            <h3 class="card-title">Première année de BB1 en Data Full Stack</h3>
+                            <h5 class="card-subtitle mb-2 text-muted">Université ESCIC - 2022-2023</h5>
+                            <p class="card-text">Introduction aux concepts de développement full stack et de gestion des données. Étude des technologies web, bases de données et premières expériences en projets intégrés.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 education-item">
+                    <div class="card bg-dark text-white">
+                        <div class="card-body">
+                            <h3 class="card-title">Année Préparatoire en Informatique</h3>
+                            <h5 class="card-subtitle mb-2 text-muted">Université ESCIC - 2021-2022</h5>
+                            <p class="card-text">Préparation aux études supérieures en informatique avec un focus sur les matières fondamentales telles que la programmation, les systèmes informatiques, et les bases de données.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 education-item">
+                    <div class="card bg-dark text-white">
+                        <div class="card-body">
+                            <h3 class="card-title">Baccalauréat Série D</h3>
+                            <h5 class="card-subtitle mb-2 text-muted">Lycée - 2018-2019</h5>
+                            <p class="card-text">Diplôme de niveau secondaire avec une spécialisation en sciences. Acquisition des bases scientifiques et mathématiques essentielles pour les études supérieures en informatique.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -192,12 +181,12 @@
                 }
             );
 
-            $('.profile, .contact').hover(
+            $('.education-item').hover(
                 function() {
-                    $(this).addClass('animate__animated animate__heartBeat');
+                    $(this).find('.card').addClass('animate__animated animate__pulse');
                 },
                 function() {
-                    $(this).removeClass('animate__animated animate__heartBeat');
+                    $(this).find('.card').removeClass('animate__animated animate__pulse');
                 }
             );
         });
