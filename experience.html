@@ -14,12 +14,16 @@
     <!-- Animate.css for additional animations -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
 
+    <!-- Three.js for 3D animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
     <!-- jQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <style>
         body {
-            background: url('background.jpg') no-repeat center center fixed;
+            background: url('R.jpeg') no-repeat center center fixed;
+
             background-size: cover;
             font-family: 'Arial', sans-serif;
             color: #fff;
@@ -95,34 +99,53 @@
             margin: 0;
             line-height: 1.5;
         }
+
+        /* 3D Animation Styles */
+        .threeD-container {
+            position: relative;
+            width: 100%;
+            height: 400px;
+            margin-bottom: 30px;
+        }
+
+        canvas {
+            display: block;
+        }
     </style>
 </head>
 <body>
-    <!-- Navbar -->
+    <!--- nav-barr --->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="tchicaya.html"><i class="fas fa-user"></i> Profil</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="competences.html"><i class="fas fa-briefcase"></i> Compétences</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="experience.html"><i class="fas fa-chart-line"></i> Expérience</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="experience-academique.html"><i class="fas fa-book"></i> Expérience Académique</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="formation.html"><i class="fas fa-graduation-cap"></i> Formation</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="projet-realisation.html"><i class="fas fa-project-diagram"></i> Projets & Réalisations</a>
-                </li>
-            </ul>
+            <a class="navbar-brand" href="#">Mackly Loick</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="tchicaya.html"><i class="fas fa-user"></i> Profil</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="competences.html"><i class="fas fa-briefcase"></i> Compétences</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="experience.html"><i class="fas fa-chart-line"></i> Expérience</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="experience-academique.html"><i class="fas fa-book"></i> Expérience Académique</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="formation.html"><i class="fas fa-graduation-cap"></i> Formation</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="projet-realisation.html"><i class="fas fa-project-diagram"></i> Projets & Réalisations</a>
+                    </li>
+                </ul>
+            </div>
         </div>
     </nav>
+
 
     <!-- Experience Section -->
     <section class="experience-section animate__animated animate__fadeIn">
@@ -131,7 +154,7 @@
             <div class="row">
                 <div class="col-md-6 experience-item">
                     <div class="card bg-dark text-white">
-                        <img src="image1.jpg" alt="Développeur Full Stack" class="card-img-top">
+                        <img src="freelance-work-gf245c180c_1280.png" alt="Développeur Full Stack" class="card-img-top">
                         <div class="card-body">
                             <h3 class="card-title">Développeur Full Stack</h3>
                             <p class="card-text">Responsable du développement de fonctionnalités front-end et back-end pour diverses applications web. Mise en œuvre de solutions innovantes et amélioration continue des systèmes existants.</p>
@@ -140,28 +163,31 @@
                 </div>
                 <div class="col-md-6 experience-item">
                     <div class="card bg-dark text-white">
-                        <img src="image2.jpg" alt="Ingénieur en Intelligence Artificielle" class="card-img-top">
+                        <img src="ia.webp" alt="Ingénieur en Intelligence Artificielle" class="card-img-top">
                         <div class="card-body">
                             <h3 class="card-title">Ingénieur en Intelligence Artificielle</h3>
+                            
                             <p class="card-text">Développement et déploiement de modèles de machine learning pour l'analyse prédictive et la classification des données. Collaboration avec des équipes multidisciplinaires pour intégrer les solutions AI dans les produits.</p>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-6 experience-item">
                     <div class="card bg-dark text-white">
-                        <img src="image3.jpg" alt="Analyste de Données" class="card-img-top">
+                        <img src="8e2a3379-97b2-42ee-82eb-5ae0cf43bb40.webp" alt="Analyste de Données" class="card-img-top">
                         <div class="card-body">
                             <h3 class="card-title">Analyste de Données</h3>
+
                             <p class="card-text">Analyse et interprétation des données pour fournir des insights stratégiques. Développement de tableaux de bord et de rapports pour aider à la prise de décision.</p>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-6 experience-item">
                     <div class="card bg-dark text-white">
-                        <img src="image4.jpg" alt="Chef de Projet IT" class="card-img-top">
+                        <img src="fff.webp" alt="Développeur Blazor Server avec ML.NET" class="card-img-top">
                         <div class="card-body">
-                            <h3 class="card-title">Chef de Projet IT</h3>
-                            <p class="card-text">Gestion de projets informatiques de grande envergure, de la planification à la livraison. Coordination des équipes techniques et communication avec les parties prenantes pour assurer le succès des projets.</p>
+                            <h3 class="card-title">Développeur Blazor Server avec ML.NET</h3>
+
+                            <p class="card-text">Développement et intégration de solutions ML.NET dans une application Blazor Server pour fournir des fonctionnalités avancées de machine learning et d'analyse prédictive.</p>
                         </div>
                     </div>
                 </div>
@@ -171,9 +197,7 @@
 
     <!-- Footer -->
     <footer class="footer">
-        <div class="container">
-            <p class="copyright">© 2023 Tous les droits réservés.</p>
-        </div>
+        <p>&copy; 2023 TCHICAYA MACKLY LOICK - Tous droits réservés</p>
     </footer>
 
     <!-- Add custom animations with jQuery -->
@@ -198,5 +222,11 @@
             );
         });
     </script>
+
+    <!-- Three.js for 3D Animations -->
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </body>
 </html>
