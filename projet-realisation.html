@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -59,11 +60,17 @@
         .project {
             margin-bottom: 30px;
             text-align: center;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
         }
 
         .project-image {
             position: relative;
             perspective: 1000px;
+            flex: 1;
+            min-width: 300px;
+            margin: 10px;
         }
 
         .project-image img {
@@ -101,29 +108,6 @@
             padding: 20px;
             border-radius: 15px;
             margin-top: 10px;
-        }
-
-        .footer {
-            background-color: rgba(0, 0, 0, 0.8);
-            color: white;
-            text-align: center;
-            padding: 10px 0;
-            box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.6);
-        }
-
-        .footer p {
-            margin: 0;
-            line-height: 1.5;
-        }
-
-        .project {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            margin-bottom: 30px;
-        }
-
-        .project-image, .project-description {
             flex: 1;
             min-width: 300px;
             margin: 10px;
@@ -138,13 +122,27 @@
             font-size: 1.2em;
             text-align: left;
         }
+
+        .footer {
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.6);
+        }
+
+        .footer p {
+            margin: 0;
+            line-height: 1.5;
+        }
     </style>
 </head>
+
 <body>
-    <!--- nav-barr --->
+    <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
-            <a class="navbar-brand" href="#">Mackly Loick</a>
+            <a class="navbar-brand" href="tchicaya.html">Mackly Loick</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -215,34 +213,31 @@
             <!-- Projet 3 -->
             <div class="project">
                 <div class="project-image" onmouseover="showDescription(3)" onmouseout="hideDescription(3)">
-                    <img src="projet3.jpg" alt="Création d'une Page Web d'Inscription et de Connexion">
+                    <img src="connexiion.webp" alt="Création d'une Page Web d'Inscription et de Connexion">
                     <button class="btn-description" onclick="toggleDescription(3)">Description</button>
                 </div>
                 <div class="project-description" id="description-3">
                     <h3>Création d'une Page Web d'Inscription et de Connexion</h3>
-                    <p>J'ai développé une interface utilisateur simple et efficace pour l'inscription et la connexion des utilisateurs en utilisant :</p>
+                    <p>Pour ce projet, j'ai développé une page web d'inscription et de connexion en utilisant :</p>
                     <ul>
-                        <li>HTML</li>
-                        <li>CSS</li>
-                        <li>Bootstrap</li>
+                        <li>HTML, CSS et Bootstrap pour le front-end</li>
+                        <li>Une intégration responsive pour différents appareils</li>
                     </ul>
-                    <p>Ce projet m'a permis de renforcer mes compétences en développement front-end et en design d'interfaces utilisateur.</p>
                 </div>
             </div>
 
             <!-- Projet 4 -->
             <div class="project">
                 <div class="project-image" onmouseover="showDescription(4)" onmouseout="hideDescription(4)">
-                    <img src="projet4.jpg" alt="Développement d'une Application de Gestion des Tâches">
+                    <img src="gestion-taches.webp" alt="Développement d'une Application de Gestion des Tâches">
                     <button class="btn-description" onclick="toggleDescription(4)">Description</button>
                 </div>
                 <div class="project-description" id="description-4">
                     <h3>Développement d'une Application de Gestion des Tâches</h3>
-                    <p>Cette application, développée en Python, permet de gérer les tâches de manière efficace grâce à :</p>
+                    <p>J'ai créé une application de gestion des tâches en Python, intégrant :</p>
                     <ul>
                         <li>Une interface utilisateur intuitive</li>
-                        <li>Des fonctionnalités de gestion de tâches avancées</li>
-                        <li>La possibilité de suivre l'avancement des projets</li>
+                        <li>Des fonctionnalités de suivi et de gestion des tâches</li>
                     </ul>
                 </div>
             </div>
@@ -250,16 +245,15 @@
             <!-- Projet 5 -->
             <div class="project">
                 <div class="project-image" onmouseover="showDescription(5)" onmouseout="hideDescription(5)">
-                    <img src="projet5.jpg" alt="Réalisation d'une Calculatrice en Base 36">
+                    <img src="calculatrice-base-36.webp" alt="Calculatrice en Base 36 en C++">
                     <button class="btn-description" onclick="toggleDescription(5)">Description</button>
                 </div>
                 <div class="project-description" id="description-5">
-                    <h3>Réalisation d'une Calculatrice en Base 36</h3>
-                    <p>J'ai conçu une calculatrice capable de réaliser des opérations en base 36 en utilisant le langage de programmation C++. Les fonctionnalités incluent :</p>
+                    <h3>Calculatrice en Base 36 en C++</h3>
+                    <p>Dans ce projet, j'ai développé une calculatrice capable de fonctionner en base 36, utilisant :</p>
                     <ul>
-                        <li>Les opérations de base (addition, soustraction, multiplication, division)</li>
-                        <li>La conversion entre les bases</li>
-                        <li>Une interface en ligne de commande simple et intuitive</li>
+                        <li>Les concepts de programmation en C++</li>
+                        <li>La conversion et l'affichage des résultats en base 36</li>
                     </ul>
                 </div>
             </div>
@@ -267,16 +261,15 @@
             <!-- Projet 6 -->
             <div class="project">
                 <div class="project-image" onmouseover="showDescription(6)" onmouseout="hideDescription(6)">
-                    <img src="projet6.jpg" alt="Création d'un Cahier des Charges pour un Site de Commerce Électronique">
+                    <img src="cahier-des-charges-e-commerce.webp" alt="Cahier des Charges pour un Site Web de Commerce Électronique">
                     <button class="btn-description" onclick="toggleDescription(6)">Description</button>
                 </div>
                 <div class="project-description" id="description-6">
-                    <h3>Création d'un Cahier des Charges pour un Site de Commerce Électronique</h3>
-                    <p>Ce projet consistait à rédiger un cahier des charges détaillé pour la création d'un site de commerce électronique, incluant :</p>
+                    <h3>Cahier des Charges pour un Site Web de Commerce Électronique</h3>
+                    <p>J'ai rédigé un cahier des charges complet pour le développement d'un site web de commerce électronique, incluant :</p>
                     <ul>
-                        <li>Les spécifications fonctionnelles et techniques</li>
-                        <li>Le design et l'ergonomie du site</li>
-                        <li>Les fonctionnalités de gestion des produits, des utilisateurs et des commandes</li>
+                        <li>Les exigences fonctionnelles et non fonctionnelles</li>
+                        <li>Les spécifications techniques et de conception</li>
                     </ul>
                 </div>
             </div>
@@ -285,27 +278,34 @@
 
     <!-- Footer -->
     <footer class="footer">
-        <p>&copy; 2023 TCHICAYA MACKLY LOICK - Tous droits réservés</p>
+        <p>&copy; 2023 Mackly Loick. Tous droits réservés.</p>
     </footer>
 
-    <!-- Custom JavaScript -->
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
     <script>
+        function toggleDescription(id) {
+            var description = document.getElementById('description-' + id);
+            if (description.style.display === 'block') {
+                description.style.display = 'none';
+            } else {
+                description.style.display = 'block';
+            }
+        }
+
         function showDescription(id) {
-            document.getElementById('description-' + id).style.display = 'block';
+            var description = document.getElementById('description-' + id);
+            description.style.display = 'block';
         }
 
         function hideDescription(id) {
-            document.getElementById('description-' + id).style.display = 'none';
-        }
-
-        function toggleDescription(id) {
-            var desc = document.getElementById('description-' + id);
-            if (desc.style.display === 'block') {
-                desc.style.display = 'none';
-            } else {
-                desc.style.display = 'block';
-            }
+            var description = document.getElementById('description-' + id);
+            description.style.display = 'none';
         }
     </script>
 </body>
+
 </html>
