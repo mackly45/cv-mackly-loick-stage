@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,7 +13,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css">
 
     <!-- Animate.css for additional animations -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 
     <!-- Three.js for 3D animations -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
@@ -23,66 +24,67 @@
     <style>
         body {
             background: url('R.jpeg') no-repeat center center fixed;
-
             background-size: cover;
             font-family: 'Arial', sans-serif;
             color: #fff;
+            margin: 0;
+            padding: 0;
         }
-
+        
         .navbar {
             background-color: rgba(0, 0, 0, 0.8);
-            box-shadow: 0px 10px 30px rgba(0,0,0,0.6);
+            box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.6);
         }
-
+        
         .navbar .nav-link {
             color: #fff !important;
             transition: background-color .3s, transform .3s;
         }
-
+        
         .navbar .nav-link:hover {
             background-color: #555 !important;
             transform: scale(1.1);
         }
-
+        
         .experience-section {
             background: rgba(0, 0, 0, 0.8);
             border-radius: 15px;
             padding: 30px;
             margin: 30px 0;
-            box-shadow: 0px 10px 30px rgba(0,0,0,0.6);
+            box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.6);
             transition: transform .3s;
         }
-
+        
         .experience-section:hover {
             transform: scale(1.05);
         }
-
+        
         h2 {
             font-size: 2.5em;
             margin-bottom: 20px;
             text-align: center;
         }
-
+        
         .experience-item {
             margin-bottom: 20px;
         }
-
+        
         .experience-item img {
             max-width: 100%;
             height: auto;
             border-radius: 10px;
-            box-shadow: 0px 5px 15px rgba(0,0,0,0.3);
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
         }
-
+        
         .experience-item h3 {
             font-size: 1.8em;
             margin-bottom: 10px;
         }
-
+        
         .experience-item p {
             font-size: 1.2em;
         }
-
+        
         .footer {
             background-color: rgba(0, 0, 0, 0.8);
             color: white;
@@ -92,27 +94,28 @@
             left: 0;
             bottom: 0;
             width: 100%;
-            box-shadow: 0px 10px 30px rgba(0,0,0,0.6);
+            box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.6);
         }
-
+        
         .footer p {
             margin: 0;
             line-height: 1.5;
         }
-
         /* 3D Animation Styles */
+        
         .threeD-container {
             position: relative;
             width: 100%;
             height: 400px;
             margin-bottom: 30px;
         }
-
+        
         canvas {
             display: block;
         }
     </style>
 </head>
+
 <body>
     <!--- nav-barr --->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -166,7 +169,7 @@
                         <img src="ia.webp" alt="Ingénieur en Intelligence Artificielle" class="card-img-top">
                         <div class="card-body">
                             <h3 class="card-title">Ingénieur en Intelligence Artificielle</h3>
-                            
+
                             <p class="card-text">Développement et déploiement de modèles de machine learning pour l'analyse prédictive et la classification des données. Collaboration avec des équipes multidisciplinaires pour intégrer les solutions AI dans les produits.</p>
                         </div>
                     </div>
@@ -191,8 +194,68 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
+                <div class="col-md-6 experience-item">
+                    <div class="card bg-dark text-white">
+                        <img src="windows-server.png" alt="Administrateur Windows Server" class="card-img-top">
+                        <div class="card-body">
+                            <h3 class="card-title">Administrateur Windows Server</h3>
+
+                            <p class="card-text">Gestion et maintenance des serveurs Windows, configuration des services, gestion des utilisateurs et des groupes, surveillance des performances et résolution des problèmes.</p>
+                        </div>
+                    </div>
+                    </</div>
+                    <div class="col-md-6 experience-item">
+                        <div class="card bg-dark text-white">
+                            <img src="sql-server.png" alt="Développeur SQL Server" class="card-img-top">
+                            <div class="card-body">
+                                <h3 class="card-title">Développeur SQL Server</h3>
+
+                                <p class="card-text">Conception et développement de bases de données, écriture de requêtes SQL complexes, optimisation des performances, gestion de la sécurité et des sauvegardes.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 experience-item">
+                        <div class="card bg-dark text-white">
+                            <img src="sharepoint.png" alt="Administrateur SharePoint" class="card-img-top">
+                            <div class="card-body">
+                                <h3 class="card-title">Administrateur SharePoint</h3>
+
+                                <p class="card-text">Configuration et gestion de sites SharePoint, développement de solutions personnalisées, gestion des autorisations et des flux de travail, maintenance et support des utilisateurs.</p>
+                            </div>
+                        </div>
+                        </</div>
+                        <div class="col-md-6 experience-item">
+                            <div class="card bg-dark text-white">
+                                <img src="devops.png" alt="Agent DevOps" class="card-img-top">
+                                <div class="card-body">
+                                    <h3 class="card-title">Agent DevOps</h3>
+
+                                    <p class="card-text">Automatisation des processus de développement, déploiement continu, intégration et test, gestion de la configuration, surveillance et résolution des problèmes.</p>
+                                </div>
+                            </div>
+                            </</div>
+                            <div class="col-md-6 experience-item">
+                                <div class="card bg-dark text-white">
+                                    <img src="odoo.png" alt="Développeur Odoo" class="card-img-top">
+                                    <div class="card-body">
+                                        <h3 class="card-title">Développeur Odoo</h3>
+
+                                        <p class="card-text">Personnalisation et développement de modules Odoo, intégration avec d'autres systèmes, maintenance et support des utilisateurs, formation et documentation.</p>
+                                    </div>
+                                </div>
+                                </</div>
+                                <div class="col-md-6 experience-item">
+                                    <div class="card bg-dark text-white">
+                                        <img src="mantis.png" alt="Administrateur Mantis" class="card-img-top">
+                                        <div class="card-body">
+                                            <h3 class="card-title">Administrateur Mantis</h3>
+
+                                            <p class="card-text">Configuration et gestion de Mantis, création et suivi des tickets, gestion des versions et des projets, maintenance et support des utilisateurs.</p>
+                                        </div>
+                                    </div>
+                                    </</div>
+                                </div>
+                            </div>
     </section>
 
     <!-- Footer -->
@@ -202,7 +265,7 @@
 
     <!-- Add custom animations with jQuery -->
     <script>
-        $(document).ready(function(){
+        $(document).ready(function() {
             $('.navbar .nav-link').hover(
                 function() {
                     $(this).addClass('animate__animated animate__pulse');
@@ -229,4 +292,5 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </body>
+
 </html>
