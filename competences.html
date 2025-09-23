@@ -4,8 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Compétences</title>
+    <title>Compétences - Mackly Loick Tchicaya</title>
 
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100;200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 
@@ -14,258 +18,851 @@
 
     <!-- Animate.css for additional animations -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    
+    <!-- AOS (Animate on Scroll) -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
-    <!-- Three.js for 3D animations -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-
+    <!-- Removed Chart.js as percentages are no longer used -->
+    
     <!-- jQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
-    <!-- Bulma CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
-
-    <!-- Tailwind CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+    
+    <!-- Particles.js for background effects -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    
+    <!-- GSAP for advanced animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 
     <!-- Custom Styles -->
     <style>
-        body {
-            background: url('R.jpeg') no-repeat center center fixed;
-            background-size: cover;
-            font-family: 'Arial', sans-serif;
-            color: #fff;
+        :root {
+            --primary-color: #00d4ff;
+            --secondary-color: #ff4081;
+            --accent-color: #00ff88;
+            --bg-primary: #0a0a0a;
+            --bg-secondary: #1a1a1a;
+            --text-primary: #ffffff;
+            --text-secondary: #b3b3b3;
+            --gradient-1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient-2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --gradient-3: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            --card-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            --card-shadow-hover: 0 35px 60px -12px rgba(0, 0, 0, 0.7);
+        }
+
+        * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
         }
-        
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            overflow-x: hidden;
+            line-height: 1.6;
+            padding-top: 80px;
+        }
+
+        /* Particles Background */
+        #particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        /* Modern Navbar */
         .navbar {
-            background-color: rgba(0, 0, 0, 0.8);
-            box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.6);
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0, 212, 255, 0.2);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            padding: 15px 0;
         }
-        
-        .navbar .nav-link {
-            color: #fff !important;
-            transition: background-color .3s, transform .3s;
+
+        .navbar.scrolled {
+            background: rgba(10, 10, 10, 0.98);
+            padding: 10px 0;
         }
-        
-        .navbar .nav-link:hover {
-            background-color: #555 !important;
-            transform: scale(1.1);
+
+        .navbar-brand {
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 700;
+            font-size: 1.8rem;
+            background: var(--gradient-3);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            transition: all 0.3s ease;
         }
-        
-        .skills {
-            background: rgba(0, 0, 0, 0.8);
+
+        .nav-link {
+            color: var(--text-primary) !important;
+            font-weight: 500;
+            position: relative;
+            margin: 0 15px;
+            padding: 12px 20px !important;
+            border-radius: 25px;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+
+        .nav-link::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: var(--gradient-3);
+            border-radius: 25px;
+            transform: translate(-50%, -50%);
+            transition: all 0.4s ease;
+            z-index: -1;
+        }
+
+        .nav-link:hover::before {
+            width: 100%;
+            height: 100%;
+        }
+
+        .nav-link:hover {
+            color: var(--bg-primary) !important;
+            transform: translateY(-3px);
+        }
+
+        /* Hero Section */
+        .skills-hero {
+            padding: 100px 0 50px;
+            text-align: center;
+            background: radial-gradient(ellipse at center, rgba(0, 212, 255, 0.1) 0%, transparent 70%);
+        }
+
+        .hero-title {
+            font-size: 4rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            background: var(--gradient-3);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+            margin-bottom: 40px;
+            font-weight: 300;
+        }
+
+        /* Skills Categories */
+        .skills-section {
+            padding: 80px 0;
+        }
+
+        .category-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 60px;
+            background: var(--gradient-2);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            margin-bottom: 80px;
+        }
+
+        .skill-category {
+            background: rgba(26, 26, 26, 0.8);
+            border-radius: 20px;
+            padding: 40px;
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            box-shadow: var(--card-shadow);
+            transition: all 0.3s ease;
+            backdrop-filter: blur(20px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill-category::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-3);
+        }
+
+        .skill-category:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--card-shadow-hover);
+            border-color: rgba(0, 212, 255, 0.5);
+        }
+
+        .category-icon {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            display: block;
+            text-align: center;
+        }
+
+        .category-name {
+            font-size: 1.8rem;
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 30px;
+            color: var(--text-primary);
+        }
+
+        .skill-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .skill-name {
+            font-weight: 500;
+            font-size: 1.1rem;
+            color: var(--text-primary);
+        }
+
+        .skill-level {
+            font-weight: 600;
+            color: var(--primary-color);
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        /* Removed skill bar styles as percentages are no longer used */
+
+        /* Tech Stack Visualization */
+        .tech-stack {
+            padding: 80px 0;
+            background: linear-gradient(135deg, rgba(26, 26, 26, 0.8) 0%, rgba(10, 10, 10, 0.9) 100%);
+        }
+
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+        }
+
+        .tech-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 30px 20px;
+            background: rgba(26, 26, 26, 0.6);
+            border-radius: 15px;
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .tech-item:hover {
+            transform: translateY(-10px) scale(1.05);
+            border-color: var(--primary-color);
+            box-shadow: 0 20px 40px rgba(0, 212, 255, 0.3);
+        }
+
+        .tech-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .tech-item:hover .tech-icon {
+            transform: scale(1.2) rotate(10deg);
+        }
+
+        .tech-name {
+            font-weight: 500;
+            text-align: center;
+            color: var(--text-secondary);
+            transition: color 0.3s ease;
+        }
+
+        .tech-item:hover .tech-name {
+            color: var(--primary-color);
+        }
+
+        /* Skills Chart Section */
+        /* Removed chart section styles as percentages are no longer used */
+
+        /* Certifications */
+        .certifications {
+            padding: 80px 0;
+        }
+
+        .cert-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+        }
+
+        .cert-card {
+            background: rgba(26, 26, 26, 0.8);
             border-radius: 15px;
             padding: 30px;
-            margin: 30px auto;
-            box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.6);
-            transition: transform .3s;
-            max-width: 1200px;
-        }
-        
-        .skills:hover {
-            transform: scale(1.05);
-        }
-        
-        h2 {
-            font-size: 2.5em;
-            margin-bottom: 20px;
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            transition: all 0.3s ease;
             text-align: center;
         }
-        
-        .skill-item {
+
+        .cert-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-color);
+        }
+
+        .cert-icon {
+            font-size: 2.5rem;
+            color: var(--accent-color);
             margin-bottom: 20px;
-            padding: 15px;
-            border-radius: 10px;
-            background: rgba(255, 255, 255, 0.1);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-            transition: transform .3s, box-shadow .3s;
-            position: relative;
         }
-        
-        .skill-item:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.6);
-        }
-        
-        .progress {
-            background-color: #444;
-            border-radius: 20px;
-            height: 20px;
-            overflow: hidden;
+
+        .cert-title {
+            font-size: 1.3rem;
+            font-weight: 600;
             margin-bottom: 10px;
+            color: var(--text-primary);
         }
-        
-        .progress-bar {
-            background-color: #ff9800;
-            transition: width 1s ease-in-out;
+
+        .cert-org {
+            color: var(--text-secondary);
+            font-size: 1rem;
         }
-        
-        .progress-bar-striped {
-            background-image: linear-gradient(45deg, rgba(255, 255, 255, .15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .15) 50%, rgba(255, 255, 255, .15) 75%, transparent 75%, transparent);
-        }
-        
-        .tooltip-custom {
-            background: rgba(0, 0, 0, 0.8);
-            color: #fff;
-            padding: 10px;
-            border-radius: 5px;
-            position: absolute;
-            top: -10px;
-            left: 50%;
-            transform: translateX(-50%) translateY(-100%);
-            z-index: 1000;
-            display: none;
-            width: 250px;
-            text-align: center;
-        }
-        
+
+        /* Footer */
         .footer {
-            background-color: rgba(0, 0, 0, 0.8);
-            color: white;
+            background: var(--bg-primary);
+            border-top: 1px solid rgba(0, 212, 255, 0.2);
+            padding: 40px 0;
             text-align: center;
-            padding: 10px 0;
-            position: fixed;
-            left: 0;
-            bottom: 0;
-            width: 100%;
-            box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.6);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .skills-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .tech-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 20px;
+            }
+            
+            .category-title {
+                font-size: 2rem;
+            }
+            
+            .skill-item {
+                margin-bottom: 20px;
+                padding: 12px 0;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .skill-category {
+                padding: 25px;
+            }
+            
+            .tech-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .cert-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .cert-card {
+                padding: 25px;
+            }
         }
         
-        .footer p {
-            margin: 0;
-            line-height: 1.5;
+        @media (max-width: 400px) {
+            .skill-category {
+                padding: 20px;
+            }
+            
+            .tech-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .tech-item {
+                padding: 20px 15px;
+            }
+            
+            .cert-card {
+                padding: 20px;
+            }
         }
     </style>
 </head>
 
 <body>
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <!-- Particles Background -->
+    <div id="particles-js"></div>
+    
+    <!-- Modern Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
         <div class="container">
-            <a class="navbar-brand" href="tchicaya.html">TCHICAYA MACKLY LOICK</a>
+            <a class="navbar-brand" href="tchicaya.html">{ Mackly.dev }</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="tchicaya.html"><i class="fas fa-user"></i> Profil</a>
+                        <a class="nav-link" href="tchicaya.html"><i class="fas fa-home"></i> Accueil</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="competences.html"><i class="fas fa-briefcase"></i> Compétences</a>
+                        <a class="nav-link" href="competences.html"><i class="fas fa-code"></i> Compétences</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="experience.html"><i class="fas fa-chart-line"></i> Expérience</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="experience-academique.html"><i class="fas fa-book"></i> Expérience Académique</a>
+                        <a class="nav-link" href="experience.html"><i class="fas fa-briefcase"></i> Expérience</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="formation.html"><i class="fas fa-graduation-cap"></i> Formation</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="projet-realisation.html"><i class="fas fa-project-diagram"></i> Projets & Réalisations</a>
+                        <a class="nav-link" href="projet-realisation.html"><i class="fas fa-rocket"></i> Projets</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact"><i class="fas fa-envelope"></i> Contact</a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <!-- Skills Section -->
-    <section class="skills animate__animated animate__fadeIn">
+    <!-- Hero Section -->
+    <section class="skills-hero">
         <div class="container">
-            <h2>Compétences</h2>
-            <div class="row">
-                <div class="col-lg-4 col-md-6">
-                    <div class="skill-item" data-detail="HTML, CSS, JavaScript, React, Node.js, projets divers">
-                        <h3>Développement Web</h3>
-                        <div class="progress">
-                            <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 90%">90%</div>
-                        </div>
-                        <div class="tooltip-custom">HTML, CSS, JavaScript, projets divers</div>
+            <h1 class="hero-title" data-aos="fade-up">Mes Compétences</h1>
+            <p class="hero-subtitle" data-aos="fade-up" data-aos-delay="200">
+                Maîtrise technique et expertise dans le développement full stack et la data science
+            </p>
+        </div>
+    </section>
+
+    <!-- Skills Categories Section -->
+    <section class="skills-section">
+        <div class="container">
+            <h2 class="category-title" data-aos="fade-up">Domaines d'Expertise</h2>
+            
+            <div class="skills-grid">
+                <!-- Frontend Development -->
+                <div class="skill-category" data-aos="fade-up" data-aos-delay="100">
+                    <i class="fab fa-html5 category-icon"></i>
+                    <h3 class="category-name">Développement Frontend</h3>
+                    
+                    <div class="skill-item">
+                        <span class="skill-name">HTML5 / CSS3</span>
+                    </div>
+                    
+                    <div class="skill-item">
+                        <span class="skill-name">JavaScript (ES6+)</span>
+                    </div>
+                    
+                    <div class="skill-item">
+                        <span class="skill-name">React.js</span>
+                    </div>
+                    
+                    <div class="skill-item">
+                        <span class="skill-name">Bootstrap / Tailwind CSS</span>
+                    </div>
+                    
+                    <div class="skill-item">
+                        <span class="skill-name">Responsive Design</span>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="skill-item" data-detail="Java, Kotlin, Android Studio, applications mobiles">
-                        <h3>Développement Mobile</h3>
-                        <div class="progress">
-                            <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 80%">80%</div>
-                        </div>
-                        <div class="tooltip-custom">C#, C++, BLAZOR, applications mobiles</div>
+
+                <!-- Backend Development -->
+                <div class="skill-category" data-aos="fade-up" data-aos-delay="200">
+                    <i class="fas fa-server category-icon"></i>
+                    <h3 class="category-name">Développement Backend</h3>
+                    
+                    <div class="skill-item">
+                        <span class="skill-name">Python</span>
+                    </div>
+                    
+                    <div class="skill-item">
+                        <span class="skill-name">PHP</span>
+                    </div>
+                    
+                    <div class="skill-item">
+                        <span class="skill-name">Node.js / Express.js</span>
+                    </div>
+                    
+                    <div class="skill-item">
+                        <span class="skill-name">API REST</span>
+                    </div>
+                    
+                    <div class="skill-item">
+                        <span class="skill-name">PostgreSQL / MySQL</span>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="skill-item" data-detail="Python, TensorFlow, scikit-learn, projets AI">
-                        <h3>Intelligence Artificielle</h3>
-                        <div class="progress">
-                            <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 75%">75%</div>
-                        </div>
-                        <div class="tooltip-custom">Python, ML.NET, projets AI</div>
+
+                <!-- Mobile Development -->
+                <div class="skill-category" data-aos="fade-up" data-aos-delay="300">
+                    <i class="fas fa-mobile-alt category-icon"></i>
+                    <h3 class="category-name">Développement Mobile</h3>
+                    
+                    <div class="skill-item">
+                        <span class="skill-name">Flutter</span>
+                    </div>
+                    
+                    <div class="skill-item">
+                        <span class="skill-name">Cross-Platform Development</span>
+                    </div>
+                    
+                    <div class="skill-item">
+                        <span class="skill-name">Mobile UI/UX</span>
+                    </div>
+                    
+                    <div class="skill-item">
+                        <span class="skill-name">App Store Deployment</span>
+                    </div>
+                    
+                    <div class="skill-item">
+                        <span class="skill-name">Mobile Optimization</span>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="skill-item" data-detail="Python, R, SQL, Tableau, analyses de données">
-                        <h3>Analyse de Données</h3>
-                        <div class="progress">
-                            <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 85%">85%</div>
-                        </div>
-                        <div class="tooltip-custom">Python, R, SQL, Tableau, analyses de données</div>
+
+                <!-- Tools & DevOps -->
+                <div class="skill-category" data-aos="fade-up" data-aos-delay="400">
+                    <i class="fas fa-tools category-icon"></i>
+                    <h3 class="category-name">Outils & Technologies</h3>
+                    
+                    <div class="skill-item">
+                        <span class="skill-name">Git / GitHub</span>
                     </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="skill-item" data-detail="MS Project, Trello, Jira, gestion d'équipes, planification de projets">
-                        <h3>Gestion de Projet</h3>
-                        <div class="progress">
-                            <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 70%">70%</div>
-                        </div>
-                        <div class="tooltip-custom">MS Project, Trello, Jira, gestion d'équipes, planification de projets</div>
+                    
+                    <div class="skill-item">
+                        <span class="skill-name">VS Code / IDEs</span>
+                    </div>
+                    
+                    <div class="skill-item">
+                        <span class="skill-name">Machine Learning</span>
+                    </div>
+                    
+                    <div class="skill-item">
+                        <span class="skill-name">Data Science</span>
+                    </div>
+                    
+                    <div class="skill-item">
+                        <span class="skill-name">Agile / Project Management</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 3D Animation Canvas -->
-    <section class="text-center my-5">
-        <div id="threejs-container" style="width: 100%; height: 400px;"></div>
+    <!-- Tech Stack Visualization -->
+    <section class="tech-stack">
+        <div class="container">
+            <h2 class="category-title" data-aos="fade-up">Stack Technologique</h2>
+            
+            <div class="tech-grid">
+                <div class="tech-item" data-aos="zoom-in" data-aos-delay="100">
+                    <i class="fab fa-python tech-icon" style="color: #3776AB;"></i>
+                    <span class="tech-name">Python</span>
+                </div>
+                
+                <div class="tech-item" data-aos="zoom-in" data-aos-delay="150">
+                    <i class="fab fa-js-square tech-icon" style="color: #F7DF1E;"></i>
+                    <span class="tech-name">JavaScript</span>
+                </div>
+                
+                <div class="tech-item" data-aos="zoom-in" data-aos-delay="200">
+                    <i class="fab fa-php tech-icon" style="color: #777BB4;"></i>
+                    <span class="tech-name">PHP</span>
+                </div>
+                
+                <div class="tech-item" data-aos="zoom-in" data-aos-delay="250">
+                    <i class="fab fa-react tech-icon" style="color: #61DAFB;"></i>
+                    <span class="tech-name">React</span>
+                </div>
+                
+                <div class="tech-item" data-aos="zoom-in" data-aos-delay="300">
+                    <i class="fas fa-mobile-alt tech-icon" style="color: #02569B;"></i>
+                    <span class="tech-name">Flutter</span>
+                </div>
+                
+                <div class="tech-item" data-aos="zoom-in" data-aos-delay="350">
+                    <i class="fab fa-node-js tech-icon" style="color: #339933;"></i>
+                    <span class="tech-name">Express.js</span>
+                </div>
+                
+                <div class="tech-item" data-aos="zoom-in" data-aos-delay="400">
+                    <i class="fas fa-database tech-icon" style="color: #336791;"></i>
+                    <span class="tech-name">PostgreSQL</span>
+                </div>
+                
+                <div class="tech-item" data-aos="zoom-in" data-aos-delay="450">
+                    <i class="fab fa-git-alt tech-icon" style="color: #F05032;"></i>
+                    <span class="tech-name">Git</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications -->
+    <section class="certifications">
+        <div class="container">
+            <h2 class="category-title" data-aos="fade-up">Certifications & Formations</h2>
+            
+            <div class="cert-grid">
+                <div class="cert-card" data-aos="fade-up" data-aos-delay="100">
+                    <i class="fas fa-graduation-cap cert-icon"></i>
+                    <h3 class="cert-title">Data Full Stack</h3>
+                    <p class="cert-org">Université ESCIC</p>
+                </div>
+                
+                <div class="cert-card" data-aos="fade-up" data-aos-delay="200">
+                    <i class="fas fa-file-pdf cert-icon"></i>
+                    <h3 class="cert-title">Certifications Techniques</h3>
+                    <p class="cert-org">Python, JavaScript, Flutter, React</p>
+                </div>
+                
+                <div class="cert-card" data-aos="fade-up" data-aos-delay="300">
+                    <i class="fas fa-code cert-icon"></i>
+                    <h3 class="cert-title">Développement Web</h3>
+                    <p class="cert-org">Formation autodidacte</p>
+                </div>
+                
+                <div class="cert-card" data-aos="fade-up" data-aos-delay="400">
+                    <i class="fas fa-certificate cert-icon"></i>
+                    <h3 class="cert-title">Machine Learning</h3>
+                    <p class="cert-org">Certification en cours</p>
+                </div>
+                
+                <div class="cert-card" data-aos="fade-up" data-aos-delay="500">
+                    <i class="fas fa-database cert-icon"></i>
+                    <h3 class="cert-title">Data Science</h3>
+                    <p class="cert-org">Formation spécialisée</p>
+                </div>
+            </div>
+        </div>
     </section>
 
     <!-- Footer -->
     <footer class="footer">
-        <p>&copy; 2023 TCHICAYA MACKLY LOICK - Tous droits réservés</p>
+        <div class="container">
+            <p>&copy; 2024 Mackly Loick Tchicaya - Développeur Full Stack & Data Scientist. Tous droits réservés.</p>
+        </div>
     </footer>
 
-    <!-- Add custom animations with jQuery -->
-    <script>
-        $(document).ready(function() {
-            // Add 3D rotation animation to progress bars on hover
-            $('.progress').hover(
-                function() {
-                    $(this).css('transform', 'rotateY(15deg)');
-                },
-                function() {
-                    $(this).css('transform', 'rotateY(0deg)');
-                }
-            );
-
-            // Animate skill items on hover
-            $('.skill-item').hover(
-                function() {
-                    $(this).addClass('animate__animated animate__tada');
-                    $(this).find('.tooltip-custom').fadeIn();
-                },
-                function() {
-                    $(this).removeClass('animate__animated animate__tada');
-                    $(this).find('.tooltip-custom').fadeOut();
-                }
-            );
-        });
-    </script>
-
+    <!-- AOS (Animate on Scroll) -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
     <!-- Bootstrap JS and dependencies -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <!-- Advanced JavaScript -->
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true,
+            mirror: false
+        });
+
+        // Particles.js configuration
+        particlesJS('particles-js', {
+            particles: {
+                number: {
+                    value: 60,
+                    density: {
+                        enable: true,
+                        value_area: 800
+                    }
+                },
+                color: {
+                    value: ['#00d4ff', '#ff4081', '#00ff88']
+                },
+                shape: {
+                    type: 'circle'
+                },
+                opacity: {
+                    value: 0.3,
+                    random: false
+                },
+                size: {
+                    value: 3,
+                    random: true
+                },
+                line_linked: {
+                    enable: true,
+                    distance: 150,
+                    color: '#00d4ff',
+                    opacity: 0.3,
+                    width: 1
+                },
+                move: {
+                    enable: true,
+                    speed: 4,
+                    direction: 'none',
+                    random: false,
+                    straight: false,
+                    out_mode: 'out',
+                    bounce: false
+                }
+            },
+            interactivity: {
+                detect_on: 'canvas',
+                events: {
+                    onhover: {
+                        enable: true,
+                        mode: 'repulse'
+                    },
+                    onclick: {
+                        enable: true,
+                        mode: 'push'
+                    },
+                    resize: true
+                }
+            },
+            retina_detect: true
+        });
+
+        // GSAP Animations
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Animate tech items on scroll
+        function animateTechItems() {
+            gsap.from('.tech-item', {
+                scrollTrigger: {
+                    trigger: '.tech-grid',
+                    start: 'top 80%',
+                    end: 'bottom 20%',
+                    toggleActions: 'play none none reverse'
+                },
+                duration: 0.8,
+                scale: 0,
+                opacity: 0,
+                stagger: 0.1,
+                ease: 'back.out(1.7)'
+            });
+        }
+
+        // Animate certification cards
+        function animateCertCards() {
+            gsap.from('.cert-card', {
+                scrollTrigger: {
+                    trigger: '.cert-grid',
+                    start: 'top 80%',
+                    end: 'bottom 20%',
+                    toggleActions: 'play none none reverse'
+                },
+                duration: 1,
+                y: 50,
+                opacity: 0,
+                stagger: 0.2,
+                ease: 'power3.out'
+            });
+        }
+
+        // Initialize all animations when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add delay to ensure everything is loaded
+            setTimeout(() => {
+                animateTechItems();
+                animateCertCards();
+            }, 500);
+        });
+
+        // Interactive hover effects
+        $(document).ready(function() {
+            // Skill category hover effects
+            $('.skill-category').hover(
+                function() {
+                    $(this).addClass('animate__animated animate__pulse');
+                },
+                function() {
+                    $(this).removeClass('animate__animated animate__pulse');
+                }
+            );
+
+            // Tech item hover effects
+            $('.tech-item').hover(
+                function() {
+                    $(this).addClass('animate__animated animate__tada');
+                },
+                function() {
+                    $(this).removeClass('animate__animated animate__tada');
+                }
+            );
+
+            // Certificate card hover effects
+            $('.cert-card').hover(
+                function() {
+                    $(this).addClass('animate__animated animate__heartBeat');
+                },
+                function() {
+                    $(this).removeClass('animate__animated animate__heartBeat');
+                }
+            );
+
+            // Smooth scrolling for navigation
+            $('.nav-link').click(function(e) {
+                const href = $(this).attr('href');
+                if (href.startsWith('#')) {
+                    e.preventDefault();
+                    const target = $(href);
+                    if (target.length) {
+                        $('html, body').animate({
+                            scrollTop: target.offset().top - 80
+                        }, 1000);
+                    }
+                }
+            });
+
+            // Mobile menu close on link click
+            $('.navbar-nav .nav-link').on('click', function() {
+                $('.navbar-collapse').collapse('hide');
+            });
+
+            // Add loading animation
+            $('body').addClass('loaded');
+        });
+
+        // Navbar scroll effect
+        $(window).scroll(function() {
+            if ($(this).scrollTop() > 100) {
+                $('.navbar').addClass('scrolled');
+            } else {
+                $('.navbar').removeClass('scrolled');
+            }
+        });
+
+        // Removed skill counter animation as percentages are no longer used
+    </script>
 </body>
 
 </html>
