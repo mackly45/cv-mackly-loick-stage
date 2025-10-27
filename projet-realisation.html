@@ -34,126 +34,105 @@
     <!-- GSAP for advanced animations -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    
+    <!-- Main JavaScript -->
+    <script src="assets/js/main.js"></script>
+
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="assets/css/main.css">
 
     <!-- Custom CSS -->
     <style>
-        :root {
-            --primary-color: #00d4ff;
-            --secondary-color: #ff4081;
-            --accent-color: #00ff88;
-            --bg-primary: #0a0a0a;
-            --bg-secondary: #1a1a1a;
-            --text-primary: #ffffff;
-            --text-secondary: #b3b3b3;
-            --gradient-1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            --gradient-2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-            --gradient-3: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-            --card-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-            --card-shadow-hover: 0 35px 60px -12px rgba(0, 0, 0, 0.7);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        /* Enhanced Body Styling */
         body {
             font-family: 'Inter', sans-serif;
-            background: var(--bg-primary);
+            background-color: var(--bg-primary);
             color: var(--text-primary);
             overflow-x: hidden;
             line-height: 1.6;
             padding-top: 80px;
-        }
-        
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: var(--bg-secondary);
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: var(--primary-color);
-            border-radius: 4px;
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: var(--secondary-color);
-        }
-
-        /* Particles Background */
-        #particles-js {
-            position: fixed;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-        }
-
-        /* Modern Navbar */
-        .navbar {
-            background: rgba(10, 10, 10, 0.95);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(0, 212, 255, 0.2);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-            transition: all 0.3s ease;
-            padding: 15px 0;
-        }
-
-        .navbar.scrolled {
-            background: rgba(10, 10, 10, 0.98);
-            padding: 10px 0;
-        }
-
-        .navbar-brand {
-            font-family: 'JetBrains Mono', monospace;
-            font-weight: 700;
-            font-size: 1.8rem;
-            background: var(--gradient-3);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            transition: all 0.3s ease;
-        }
-
-        .nav-link {
-            color: var(--text-primary) !important;
-            font-weight: 500;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(0, 212, 255, 0.05) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(255, 64, 129, 0.05) 0%, transparent 20%),
+                radial-gradient(circle at 50% 50%, rgba(0, 255, 136, 0.03) 0%, transparent 30%);
+            background-attachment: fixed;
             position: relative;
-            margin: 0 15px;
-            padding: 12px 20px !important;
-            border-radius: 25px;
-            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            text-transform: uppercase;
-            font-size: 0.9rem;
-            letter-spacing: 1px;
+            z-index: 1;
         }
 
-        .nav-link::before {
+        body::before {
             content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            background: var(--gradient-3);
-            border-radius: 25px;
-            transform: translate(-50%, -50%);
-            transition: all 0.4s ease;
-            z-index: -1;
-        }
-
-        .nav-link:hover::before {
+            position: fixed;
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
+            background: 
+                radial-gradient(ellipse at center, rgba(0, 212, 255, 0.03) 0%, transparent 70%),
+                linear-gradient(to bottom, rgba(10, 10, 10, 0.9) 0%, rgba(10, 10, 10, 0.95) 100%);
+            z-index: -1;
+            animation: backgroundShift 20s ease-in-out infinite alternate;
         }
 
-        .nav-link:hover {
-            color: var(--bg-primary) !important;
-            transform: translateY(-3px);
+        @keyframes backgroundShift {
+            0% {
+                opacity: 0.5;
+                transform: scale(1);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1.05);
+            }
+        }
+
+        /* Floating Elements for Depth */
+        .floating-element {
+            position: fixed;
+            border-radius: 50%;
+            background: var(--gradient-3);
+            opacity: 0.1;
+            z-index: -1;
+            animation: floatElement 15s infinite ease-in-out;
+            filter: blur(20px);
+        }
+
+        .floating-element:nth-child(1) {
+            width: 150px;
+            height: 150px;
+            top: 10%;
+            left: 5%;
+            animation-delay: 0s;
+        }
+
+        .floating-element:nth-child(2) {
+            width: 100px;
+            height: 100px;
+            bottom: 15%;
+            right: 10%;
+            animation-delay: 2s;
+        }
+
+        .floating-element:nth-child(3) {
+            width: 200px;
+            height: 200px;
+            top: 40%;
+            right: 20%;
+            animation-delay: 4s;
+        }
+
+        @keyframes floatElement {
+            0%, 100% {
+                transform: translate(0, 0) scale(1);
+            }
+            25% {
+                transform: translate(20px, -30px) scale(1.1);
+            }
+            50% {
+                transform: translate(-15px, 20px) scale(0.9);
+            }
+            75% {
+                transform: translate(10px, 30px) scale(1.05);
+            }
         }
 
         /* Hero Section */
@@ -161,26 +140,89 @@
             padding: 100px 0 50px;
             text-align: center;
             background: radial-gradient(ellipse at center, rgba(0, 212, 255, 0.1) 0%, transparent 70%);
+            position: relative;
+            z-index: 2;
         }
-
+        
+        .projects-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, rgba(0, 212, 255, 0.15) 0%, transparent 70%);
+            z-index: 1;
+            animation: pulseGlow 4s ease-in-out infinite alternate;
+        }
+        
+        .projects-hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: conic-gradient(from 0deg at 50% 50%, rgba(0, 212, 255, 0.1), transparent, rgba(255, 64, 129, 0.1), transparent, rgba(0, 255, 136, 0.1), transparent);
+            z-index: 0;
+            animation: rotateGradient 10s linear infinite;
+            opacity: 0.3;
+        }
+        
         .hero-title {
-            font-size: 4rem;
-            font-weight: 800;
-            margin-bottom: 20px;
+            animation: fadeInUp 1s ease-out, textGlow 3s ease-in-out infinite alternate;
+            text-shadow: 0 5px 15px rgba(0, 212, 255, 0.3);
             background: var(--gradient-3);
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
+            position: relative;
+            font-size: 4rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px) rotateX(10deg);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) rotateX(0);
+            }
+        }
+        
+        @keyframes pulseGlow {
+            0% {
+                opacity: 0.15;
+                transform: scale(1);
+            }
+            100% {
+                opacity: 0.25;
+                transform: scale(1.05);
+            }
+        }
+        
+        @keyframes rotateGradient {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+        
+        @keyframes textGlow {
+            0% {
+                text-shadow: 0 5px 15px rgba(0, 212, 255, 0.3);
+            }
+            100% {
+                text-shadow: 0 5px 25px rgba(0, 212, 255, 0.6), 0 0 30px rgba(0, 212, 255, 0.4);
+            }
         }
 
-        .hero-subtitle {
-            font-size: 1.5rem;
-            color: var(--text-secondary);
-            margin-bottom: 40px;
-            font-weight: 300;
-        }
-
-        /* Filter Buttons */
+        /* Enhanced Filter Buttons */
         .filter-buttons {
             display: flex;
             justify-content: center;
@@ -196,19 +238,60 @@
             border-radius: 25px;
             color: var(--text-primary);
             font-weight: 500;
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             cursor: pointer;
             text-transform: uppercase;
             letter-spacing: 1px;
             font-size: 0.9rem;
+            position: relative;
+            overflow: hidden;
+            transform-style: preserve-3d;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .filter-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
+        }
+
+        .filter-btn:nth-child(2n) {
+            animation-delay: 0.2s;
+        }
+
+        .filter-btn:nth-child(3n) {
+            animation-delay: 0.4s;
         }
 
         .filter-btn:hover,
         .filter-btn.active {
-            background: var(--primary-color);
+            background: var(--gradient-3);
             color: var(--bg-primary);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(0, 212, 255, 0.3);
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 30px rgba(0, 212, 255, 0.5);
+            animation: none;
+        }
+
+        .filter-btn:hover::before {
+            left: 100%;
+        }
+
+        .filter-btn.active::before {
+            left: 100%;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-5px);
+            }
         }
 
         /* Projects Grid */
@@ -217,6 +300,7 @@
             grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
             gap: 40px;
             padding: 40px 0;
+            perspective: 1000px;
         }
 
         .project-card {
@@ -229,6 +313,8 @@
             backdrop-filter: blur(20px);
             position: relative;
             cursor: pointer;
+            transform-style: preserve-3d;
+            animation: fadeInUp 0.6s ease-out;
         }
 
         .project-card::before {
@@ -240,15 +326,33 @@
             height: 4px;
             background: var(--gradient-3);
             transform: scaleX(0);
-            transition: transform 0.3s ease;
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .project-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-3);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            z-index: -1;
+            border-radius: 20px;
         }
 
         .project-card:hover::before {
             transform: scaleX(1);
         }
 
+        .project-card:hover::after {
+            opacity: 0.1;
+        }
+
         .project-card:hover {
-            transform: translateY(-20px) scale(1.02);
+            transform: translateY(-25px) scale(1.03) rotateY(5deg);
             box-shadow: var(--card-shadow-hover);
             border-color: rgba(0, 212, 255, 0.5);
         }
@@ -263,11 +367,13 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: all 0.5s ease;
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            filter: saturate(1.1) contrast(1.05);
         }
 
         .project-card:hover .project-image img {
-            transform: scale(1.1);
+            transform: scale(1.15);
+            filter: saturate(1.3) contrast(1.2) brightness(1.1);
         }
 
         .project-overlay {
@@ -278,10 +384,11 @@
             bottom: 0;
             background: linear-gradient(135deg, rgba(0, 212, 255, 0.8) 0%, rgba(255, 64, 129, 0.8) 100%);
             opacity: 0;
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             display: flex;
             align-items: center;
             justify-content: center;
+            backdrop-filter: blur(5px);
         }
 
         .project-card:hover .project-overlay {
@@ -304,19 +411,40 @@
             color: white;
             font-size: 1.2rem;
             text-decoration: none;
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+            z-index: 2;
+        }
+
+        .project-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transition: 0.5s;
         }
 
         .project-link:hover {
-            background: rgba(255, 255, 255, 0.3);
-            transform: scale(1.1);
+            background: rgba(255, 255, 255, 0.4);
+            transform: scale(1.2) rotate(10deg);
             color: white;
             text-decoration: none;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .project-link:hover::before {
+            left: 100%;
         }
 
         .project-content {
             padding: 30px;
+            position: relative;
+            z-index: 2;
         }
 
         .project-title {
@@ -324,6 +452,24 @@
             font-weight: 600;
             margin-bottom: 15px;
             color: var(--text-primary);
+            position: relative;
+        }
+
+        .project-title::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: white;
+            border-radius: 3px;
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover .project-title::after {
+            transform: scaleX(1);
         }
 
         .project-description {
@@ -347,6 +493,49 @@
             color: var(--primary-color);
             font-size: 0.8rem;
             font-weight: 500;
+            transition: all 0.3s ease;
+            animation: float 3s ease-in-out infinite;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tech-tag::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
+        }
+
+        .tech-tag:nth-child(2n) {
+            animation-delay: 0.2s;
+        }
+
+        .tech-tag:nth-child(3n) {
+            animation-delay: 0.4s;
+        }
+
+        .tech-tag:hover {
+            background: var(--gradient-3);
+            color: var(--bg-primary);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 212, 255, 0.3);
+        }
+
+        .tech-tag:hover::before {
+            left: 100%;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-3px);
+            }
         }
 
         .project-status {
@@ -560,6 +749,11 @@
     <!-- Particles Background -->
     <div id="particles-js"></div>
     
+    <!-- Floating Elements for Depth -->
+    <div class="floating-element"></div>
+    <div class="floating-element"></div>
+    <div class="floating-element"></div>
+    
     <!-- Modern Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
         <div class="container">
@@ -579,16 +773,10 @@
                         <a class="nav-link" href="experience.html"><i class="fas fa-briefcase"></i> Expérience</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="experience-academique.html"><i class="fas fa-book"></i> Expérience Académique</a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link" href="formation.html"><i class="fas fa-graduation-cap"></i> Formation</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="projet-realisation.html"><i class="fas fa-rocket"></i> Projets</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#contact"><i class="fas fa-envelope"></i> Contact</a>
                     </li>
                 </ul>
             </div>
@@ -598,8 +786,8 @@
     <!-- Hero Section -->
     <section class="projects-hero">
         <div class="container">
-            <h1 class="hero-title" data-aos="fade-up">Mes Projets</h1>
-            <p class="hero-subtitle" data-aos="fade-up" data-aos-delay="200">
+            <h1 class="hero-title">Mes Projets</h1>
+            <p class="hero-subtitle">
                 Découvrez mes réalisations et projets innovants en développement et data science
             </p>
         </div>
@@ -607,7 +795,7 @@
 
     <!-- Filter Buttons -->
     <section class="container">
-        <div class="filter-buttons" data-aos="fade-up" data-aos-delay="400">
+        <div class="filter-buttons">
             <button class="filter-btn active" data-filter="all">Tous</button>
             <button class="filter-btn" data-filter="web">Web</button>
             <button class="filter-btn" data-filter="ai">IA & ML</button>
@@ -619,10 +807,10 @@
     <!-- Projects Grid -->
     <section class="container">
         <div class="projects-grid">
-            <!-- Project 1: Dog Breed Recognition -->
-            <div class="project-card" data-category="ai" data-aos="fade-up" data-aos-delay="100">
+            <!-- Project 1: Full Stack Application -->
+            <div class="project-card" data-category="web">
                 <div class="project-image">
-                    <img src="DALL·E 2024-07-21 23.22.07 - A sleek and modern interface of a dog breed identification application with an image of various dog breeds being identified.webp" alt="Reconnaissance de races de chiens">
+                    <img src="DALL·E 2024-07-21 23.22.07 - A sleek and modern interface of a dog breed identification application with an image of various dog breeds being identified.webp" alt="Application Full Stack">
                     <div class="project-overlay">
                         <div class="project-links">
                             <a href="#" class="project-link" onclick="openModal('project1')">
@@ -635,24 +823,24 @@
                     </div>
                 </div>
                 <div class="project-content">
-                    <h3 class="project-title">Reconnaissance de Races de Chiens</h3>
+                    <h3 class="project-title">Application Full Stack Moderne</h3>
                     <p class="project-description">
-                        Application d'intelligence artificielle utilisant Python et TensorFlow pour identifier les races de chiens à partir d'images avec une précision de 92%.
+                        Application web complète avec backend Python/Flask et frontend React, intégrant une base de données PostgreSQL et des APIs REST.
                     </p>
                     <div class="project-tech">
                         <span class="tech-tag">Python</span>
-                        <span class="tech-tag">TensorFlow</span>
-                        <span class="tech-tag">Computer Vision</span>
+                        <span class="tech-tag">React</span>
                         <span class="tech-tag">Flask</span>
+                        <span class="tech-tag">PostgreSQL</span>
                     </div>
                     <span class="project-status status-completed">Terminé</span>
                 </div>
             </div>
 
-            <!-- Project 2: Social Media Analytics -->
-            <div class="project-card" data-category="data" data-aos="fade-up" data-aos-delay="200">
+            <!-- Project 2: Data Analytics Dashboard -->
+            <div class="project-card" data-category="data">
                 <div class="project-image">
-                    <img src="DALL·E 2024-07-21 23.22.36 - An analytics dashboard showing social media metrics, including graphs and charts depicting trends and user engagement.webp" alt="Analyse de réseaux sociaux">
+                    <img src="DALL·E 2024-07-21 23.22.36 - An analytics dashboard showing social media metrics, including graphs and charts depicting trends and user engagement.webp" alt="Tableau de bord analytique">
                     <div class="project-overlay">
                         <div class="project-links">
                             <a href="#" class="project-link" onclick="openModal('project2')">
@@ -665,22 +853,22 @@
                     </div>
                 </div>
                 <div class="project-content">
-                    <h3 class="project-title">Analyse de Notoriété Réseaux Sociaux</h3>
+                    <h3 class="project-title">Tableau de Bord Analytique</h3>
                     <p class="project-description">
-                        Plateforme d'analyse de données pour mesurer et optimiser la notoriété des pages sur les réseaux sociaux avec des recommandations IA.
+                        Plateforme d'analyse de données avec visualisations interactives, intégrant Pandas, Matplotlib et des sources de données multiples.
                     </p>
                     <div class="project-tech">
                         <span class="tech-tag">Python</span>
                         <span class="tech-tag">Pandas</span>
                         <span class="tech-tag">Matplotlib</span>
-                        <span class="tech-tag">API Social Media</span>
+                        <span class="tech-tag">APIs</span>
                     </div>
                     <span class="project-status status-completed">Terminé</span>
                 </div>
             </div>
 
             <!-- Project 3: Authentication System -->
-            <div class="project-card" data-category="web" data-aos="fade-up" data-aos-delay="300">
+            <div class="project-card" data-category="web">
                 <div class="project-image">
                     <img src="connexiion.webp" alt="Système d'authentification">
                     <div class="project-overlay">
@@ -695,7 +883,7 @@
                     </div>
                 </div>
                 <div class="project-content">
-                    <h3 class="project-title">Système d'Authentification Moderne</h3>
+                    <h3 class="project-title">Système d'Authentification Sécurisé</h3>
                     <p class="project-description">
                         Interface d'inscription et de connexion responsive avec sécurité avancée, validation en temps réel et design moderne.
                     </p>
@@ -710,7 +898,7 @@
             </div>
 
             <!-- Project 4: Task Management App -->
-            <div class="project-card" data-category="web" data-aos="fade-up" data-aos-delay="400">
+            <div class="project-card" data-category="web">
                 <div class="project-image">
                     <img src="rnfhd.webp" alt="Application de gestion de tâches">
                     <div class="project-overlay">
@@ -739,10 +927,10 @@
                 </div>
             </div>
 
-            <!-- Project 5: Base 36 Calculator -->
-            <div class="project-card" data-category="web" data-aos="fade-up" data-aos-delay="500">
+            <!-- Project 5: Machine Learning Model -->
+            <div class="project-card" data-category="ai">
                 <div class="project-image">
-                    <img src="geometry-4165494_1920.webp" alt="Calculatrice base 36">
+                    <img src="ia.webp" alt="Modèle d'apprentissage automatique">
                     <div class="project-overlay">
                         <div class="project-links">
                             <a href="#" class="project-link" onclick="openModal('project5')">
@@ -755,44 +943,45 @@
                     </div>
                 </div>
                 <div class="project-content">
-                    <h3 class="project-title">Calculatrice Base 36</h3>
+                    <h3 class="project-title">Modèle de Prédiction ML</h3>
                     <p class="project-description">
-                        Calculatrice avancée en C++ supportant les opérations mathématiques en base 36 avec interface utilisateur intuitive.
+                        Modèle d'apprentissage automatique pour la prédiction de tendances avec Scikit-learn, entraîné sur des données réelles.
                     </p>
                     <div class="project-tech">
-                        <span class="tech-tag">C++</span>
-                        <span class="tech-tag">Algorithmes</span>
-                        <span class="tech-tag">Mathématiques</span>
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Scikit-learn</span>
+                        <span class="tech-tag">Pandas</span>
+                        <span class="tech-tag">Numpy</span>
                     </div>
                     <span class="project-status status-completed">Terminé</span>
                 </div>
             </div>
 
-            <!-- Project 6: E-commerce Specification -->
-            <div class="project-card" data-category="web" data-aos="fade-up" data-aos-delay="600">
+            <!-- Project 6: Mobile Application -->
+            <div class="project-card" data-category="mobile">
                 <div class="project-image">
-                    <img src="Comment-concevoir-cahier-charges--LE.avif" alt="Cahier des charges e-commerce">
+                    <img src="freelance-work-gf245c180c_1280.png" alt="Application mobile">
                     <div class="project-overlay">
                         <div class="project-links">
                             <a href="#" class="project-link" onclick="openModal('project6')">
                                 <i class="fas fa-eye"></i>
                             </a>
                             <a href="#" class="project-link">
-                                <i class="fas fa-file-alt"></i>
+                                <i class="fab fa-github"></i>
                             </a>
                         </div>
                     </div>
                 </div>
                 <div class="project-content">
-                    <h3 class="project-title">Cahier des Charges E-commerce</h3>
+                    <h3 class="project-title">Application Mobile Cross-Platform</h3>
                     <p class="project-description">
-                        Documentation technique complète pour le développement d'une plateforme e-commerce avec architecture moderne et sécurisée.
+                        Application mobile développée avec Flutter pour Android et iOS, intégrant des APIs et une interface utilisateur moderne.
                     </p>
                     <div class="project-tech">
-                        <span class="tech-tag">UML</span>
-                        <span class="tech-tag">Architecture</span>
-                        <span class="tech-tag">Database Design</span>
-                        <span class="tech-tag">Sécurité</span>
+                        <span class="tech-tag">Flutter</span>
+                        <span class="tech-tag">Dart</span>
+                        <span class="tech-tag">Firebase</span>
+                        <span class="tech-tag">APIs</span>
                     </div>
                     <span class="project-status status-completed">Terminé</span>
                 </div>
@@ -801,45 +990,45 @@
     </section>
 
     <!-- Project Modals -->
-    <!-- Modal 1: Dog Breed Recognition -->
+    <!-- Modal 1: Full Stack Application -->
     <div id="project1" class="project-modal">
         <div class="modal-content">
             <span class="modal-close" onclick="closeModal('project1')">&times;</span>
-            <h2 class="modal-title">Reconnaissance de Races de Chiens par IA</h2>
+            <h2 class="modal-title">Application Full Stack Moderne</h2>
             <p class="modal-description">
-                Application innovante développée avec Python et TensorFlow pour identifier automatiquement les races de chiens à partir de photos. Le système utilise des algorithmes de deep learning pour analyser les caractéristiques visuelles et fournir une identification précise avec un taux de réussite de 92%.
+                Application web complète développée avec un backend Python/Flask et un frontend React. Cette application démontre mes compétences full stack avec une architecture moderne et sécurisée.
             </p>
             <div class="modal-features">
                 <h4>Fonctionnalités principales :</h4>
                 <ul>
-                    <li>Upload d'images avec prévisualisation</li>
-                    <li>Analyse en temps réel des caractéristiques</li>
-                    <li>Identification avec score de confiance</li>
-                    <li>Base de données de plus de 120 races</li>
-                    <li>Interface utilisateur intuitive et responsive</li>
-                    <li>Historique des analyses précédentes</li>
+                    <li>API RESTful avec Flask et PostgreSQL</li>
+                    <li>Interface utilisateur réactive avec React</li>
+                    <li>Authentification et autorisation avancées</li>
+                    <li>Gestion des données avec SQLAlchemy</li>
+                    <li>Déploiement avec Docker et nginx</li>
+                    <li>Tests automatisés avec Pytest</li>
                 </ul>
             </div>
         </div>
     </div>
 
-    <!-- Modal 2: Social Media Analytics -->
+    <!-- Modal 2: Data Analytics Dashboard -->
     <div id="project2" class="project-modal">
         <div class="modal-content">
             <span class="modal-close" onclick="closeModal('project2')">&times;</span>
-            <h2 class="modal-title">Plateforme d'Analyse de Réseaux Sociaux</h2>
+            <h2 class="modal-title">Tableau de Bord Analytique</h2>
             <p class="modal-description">
-                Solution complète d'analyse de données pour mesurer et optimiser la présence sur les réseaux sociaux. Utilise des algorithmes de machine learning pour analyser les tendances, l'engagement et proposer des stratégies d'amélioration personnalisées.
+                Plateforme d'analyse de données complète avec visualisations interactives. Cette solution permet d'analyser de grandes quantités de données et de générer des insights exploitables.
             </p>
             <div class="modal-features">
                 <h4>Fonctionnalités principales :</h4>
                 <ul>
-                    <li>Collecte automatique de données multi-plateformes</li>
-                    <li>Analyse de sentiment en temps réel</li>
-                    <li>Tableaux de bord interactifs avec visualisations</li>
-                    <li>Prédictions de tendances avec IA</li>
-                    <li>Recommandations personnalisées de contenu</li>
-                    <li>Rapports automatiques et alertes</li>
+                    <li>Collecte de données depuis plusieurs sources</li>
+                    <li>Visualisations interactives avec Matplotlib et Plotly</li>
+                    <li>Tableaux de bord personnalisables</li>
+                    <li>Analyses statistiques avancées</li>
+                    <li>Rapports automatisés et exportation</li>
+                    <li>Interface utilisateur intuitive</li>
                 </ul>
             </div>
         </div>
@@ -851,7 +1040,7 @@
             <span class="modal-close" onclick="closeModal('project3')">&times;</span>
             <h2 class="modal-title">Système d'Authentification Sécurisé</h2>
             <p class="modal-description">
-                Interface moderne et sécurisée pour l'inscription et la connexion d'utilisateurs. Intègre les meilleures pratiques de sécurité web avec validation en temps réel et design responsive adapté à tous les appareils.
+                Interface moderne et sécurisée pour l'inscription et la connexion d'utilisateurs. Intègre les meilleures pratiques de sécurité web avec validation en temps réel.
             </p>
             <div class="modal-features">
                 <h4>Fonctionnalités principales :</h4>
@@ -873,7 +1062,7 @@
             <span class="modal-close" onclick="closeModal('project4')">&times;</span>
             <h2 class="modal-title">Application de Gestion de Tâches</h2>
             <p class="modal-description">
-                Application web complète pour la gestion de tâches personnelles et professionnelles. Offre une interface intuitive avec des fonctionnalités avancées de suivi, catégorisation et collaboration en équipe.
+                Application web complète pour la gestion de tâches personnelles et professionnelles. Offre une interface intuitive avec des fonctionnalités avancées de suivi.
             </p>
             <div class="modal-features">
                 <h4>Fonctionnalités principales :</h4>
@@ -889,45 +1078,45 @@
         </div>
     </div>
 
-    <!-- Modal 5: Base 36 Calculator -->
+    <!-- Modal 5: Machine Learning Model -->
     <div id="project5" class="project-modal">
         <div class="modal-content">
             <span class="modal-close" onclick="closeModal('project5')">&times;</span>
-            <h2 class="modal-title">Calculatrice Base 36 Avancée</h2>
+            <h2 class="modal-title">Modèle de Prédiction ML</h2>
             <p class="modal-description">
-                Calculatrice scientifique développée en C++ capable d'effectuer des opérations mathématiques complexes en base 36. Implémente des algorithmes optimisés pour la conversion et le calcul dans différentes bases numériques.
+                Modèle d'apprentissage automatique pour la prédiction de tendances. Utilise des algorithmes avancés pour analyser les données et fournir des prédictions précises.
             </p>
             <div class="modal-features">
                 <h4>Fonctionnalités principales :</h4>
                 <ul>
-                    <li>Opérations arithmétiques de base en base 36</li>
-                    <li>Conversion automatique entre bases</li>
-                    <li>Fonctions scientifiques avancées</li>
-                    <li>Historique des calculs</li>
-                    <li>Interface console optimisée</li>
-                    <li>Gestion d'erreurs robuste</li>
+                    <li>Prétraitement de données avec Pandas</li>
+                    <li>Modélisation avec Scikit-learn</li>
+                    <li>Validation croisée et optimisation</li>
+                    <li>Visualisation des résultats</li>
+                    <li>API pour l'intégration dans d'autres applications</li>
+                    <li>Documentation complète et tests</li>
                 </ul>
             </div>
         </div>
     </div>
 
-    <!-- Modal 6: E-commerce Specification -->
+    <!-- Modal 6: Mobile Application -->
     <div id="project6" class="project-modal">
         <div class="modal-content">
             <span class="modal-close" onclick="closeModal('project6')">&times;</span>
-            <h2 class="modal-title">Cahier des Charges E-commerce</h2>
+            <h2 class="modal-title">Application Mobile Cross-Platform</h2>
             <p class="modal-description">
-                Documentation technique exhaustive pour le développement d'une plateforme e-commerce moderne. Couvre tous les aspects du projet depuis l'architecture jusqu'aux spécifications de sécurité et de performance.
+                Application mobile développée avec Flutter pour Android et iOS. Offre une expérience utilisateur fluide sur tous les appareils avec des fonctionnalités avancées.
             </p>
             <div class="modal-features">
-                <h4>Contenu du document :</h4>
+                <h4>Fonctionnalités principales :</h4>
                 <ul>
-                    <li>Analyse des besoins et objectifs business</li>
-                    <li>Architecture technique et diagrammes UML</li>
-                    <li>Modélisation de base de données</li>
-                    <li>Spécifications de sécurité et conformité</li>
-                    <li>Plan de déploiement et maintenance</li>
-                    <li>Estimations de coûts et planning</li>
+                    <li>Interface utilisateur moderne avec Flutter</li>
+                    <li>Intégration avec des APIs REST</li>
+                    <li>Système de notifications push</li>
+                    <li>Gestion hors-ligne avec SQLite</li>
+                    <li>Authentification biométrique</li>
+                    <li>Déploiement sur les stores Android et iOS</li>
                 </ul>
             </div>
         </div>
@@ -1023,18 +1212,11 @@
 
         // Project card animations
         function animateProjectCards() {
-            gsap.from('.project-card', {
-                scrollTrigger: {
-                    trigger: '.projects-grid',
-                    start: 'top 80%',
-                    end: 'bottom 20%',
-                    toggleActions: 'play none none reverse'
-                },
-                duration: 1,
-                y: 100,
-                opacity: 0,
-                stagger: 0.2,
-                ease: 'power3.out'
+            // Simplified animation - just ensure all cards are visible
+            const projectCards = document.querySelectorAll('.project-card');
+            projectCards.forEach(card => {
+                card.style.display = 'block';
+                card.style.opacity = '1';
             });
         }
 
@@ -1056,23 +1238,9 @@
                         const cardCategory = card.getAttribute('data-category');
                         
                         if (filterValue === 'all' || cardCategory === filterValue) {
-                            gsap.to(card, {
-                                duration: 0.5,
-                                scale: 1,
-                                opacity: 1,
-                                display: 'block',
-                                ease: 'power2.out'
-                            });
+                            card.style.display = 'block';
                         } else {
-                            gsap.to(card, {
-                                duration: 0.3,
-                                scale: 0.8,
-                                opacity: 0,
-                                ease: 'power2.in',
-                                onComplete: () => {
-                                    card.style.display = 'none';
-                                }
-                            });
+                            card.style.display = 'none';
                         }
                     });
                 });
