@@ -1,0 +1,1409 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projets & Réalisations - Mackly Loick Tchicaya</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100;200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <!-- Font Awesome CSS -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css">
+
+    <!-- Animate.css for additional animations -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    
+    <!-- AOS (Animate on Scroll) -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- Lightbox CSS for image gallery -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css">
+
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    
+    <!-- Particles.js for background effects -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    
+    <!-- GSAP for advanced animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    
+    <!-- Main JavaScript -->
+    <script src="assets/js/main.js"></script>
+
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="assets/css/main.css">
+
+    <!-- Custom CSS -->
+    <style>
+        /* Enhanced Body Styling */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            overflow-x: hidden;
+            line-height: 1.6;
+            padding-top: 80px;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(0, 212, 255, 0.05) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(255, 64, 129, 0.05) 0%, transparent 20%),
+                radial-gradient(circle at 50% 50%, rgba(0, 255, 136, 0.03) 0%, transparent 30%);
+            background-attachment: fixed;
+            position: relative;
+            z-index: 1;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(ellipse at center, rgba(0, 212, 255, 0.03) 0%, transparent 70%),
+                linear-gradient(to bottom, rgba(10, 10, 10, 0.9) 0%, rgba(10, 10, 10, 0.95) 100%);
+            z-index: -1;
+            animation: backgroundShift 20s ease-in-out infinite alternate;
+        }
+
+        @keyframes backgroundShift {
+            0% {
+                opacity: 0.5;
+                transform: scale(1);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1.05);
+            }
+        }
+
+        /* Floating Elements for Depth */
+        .floating-element {
+            position: fixed;
+            border-radius: 50%;
+            background: var(--gradient-3);
+            opacity: 0.1;
+            z-index: -1;
+            animation: floatElement 15s infinite ease-in-out;
+            filter: blur(20px);
+        }
+
+        .floating-element:nth-child(1) {
+            width: 150px;
+            height: 150px;
+            top: 10%;
+            left: 5%;
+            animation-delay: 0s;
+        }
+
+        .floating-element:nth-child(2) {
+            width: 100px;
+            height: 100px;
+            bottom: 15%;
+            right: 10%;
+            animation-delay: 2s;
+        }
+
+        .floating-element:nth-child(3) {
+            width: 200px;
+            height: 200px;
+            top: 40%;
+            right: 20%;
+            animation-delay: 4s;
+        }
+
+        @keyframes floatElement {
+            0%, 100% {
+                transform: translate(0, 0) scale(1);
+            }
+            25% {
+                transform: translate(20px, -30px) scale(1.1);
+            }
+            50% {
+                transform: translate(-15px, 20px) scale(0.9);
+            }
+            75% {
+                transform: translate(10px, 30px) scale(1.05);
+            }
+        }
+
+        /* Hero Section */
+        .projects-hero {
+            padding: 100px 0 50px;
+            text-align: center;
+            background: radial-gradient(ellipse at center, rgba(0, 212, 255, 0.1) 0%, transparent 70%);
+            position: relative;
+            z-index: 2;
+        }
+        
+        .projects-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, rgba(0, 212, 255, 0.15) 0%, transparent 70%);
+            z-index: 1;
+            animation: pulseGlow 4s ease-in-out infinite alternate;
+        }
+        
+        .projects-hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: conic-gradient(from 0deg at 50% 50%, rgba(0, 212, 255, 0.1), transparent, rgba(255, 64, 129, 0.1), transparent, rgba(0, 255, 136, 0.1), transparent);
+            z-index: 0;
+            animation: rotateGradient 10s linear infinite;
+            opacity: 0.3;
+        }
+        
+        .hero-title {
+            animation: fadeInUp 1s ease-out, textGlow 3s ease-in-out infinite alternate;
+            text-shadow: 0 5px 15px rgba(0, 212, 255, 0.3);
+            background: var(--gradient-3);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            position: relative;
+            font-size: 4rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px) rotateX(10deg);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) rotateX(0);
+            }
+        }
+        
+        @keyframes pulseGlow {
+            0% {
+                opacity: 0.15;
+                transform: scale(1);
+            }
+            100% {
+                opacity: 0.25;
+                transform: scale(1.05);
+            }
+        }
+        
+        @keyframes rotateGradient {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+        
+        @keyframes textGlow {
+            0% {
+                text-shadow: 0 5px 15px rgba(0, 212, 255, 0.3);
+            }
+            100% {
+                text-shadow: 0 5px 25px rgba(0, 212, 255, 0.6), 0 0 30px rgba(0, 212, 255, 0.4);
+            }
+        }
+
+        /* Enhanced Filter Buttons */
+        .filter-buttons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 60px;
+        }
+
+        .filter-btn {
+            padding: 12px 25px;
+            background: rgba(26, 26, 26, 0.8);
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            border-radius: 25px;
+            color: var(--text-primary);
+            font-weight: 500;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+            position: relative;
+            overflow: hidden;
+            transform-style: preserve-3d;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .filter-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
+        }
+
+        .filter-btn:nth-child(2n) {
+            animation-delay: 0.2s;
+        }
+
+        .filter-btn:nth-child(3n) {
+            animation-delay: 0.4s;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--gradient-3);
+            color: var(--bg-primary);
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 30px rgba(0, 212, 255, 0.5);
+            animation: none;
+        }
+
+        .filter-btn:hover::before {
+            left: 100%;
+        }
+
+        .filter-btn.active::before {
+            left: 100%;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-5px);
+            }
+        }
+
+        /* Projects Grid */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 40px;
+            padding: 40px 0;
+            perspective: 1000px;
+        }
+
+        .project-card {
+            background: rgba(26, 26, 26, 0.8);
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            box-shadow: var(--card-shadow);
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            backdrop-filter: blur(20px);
+            position: relative;
+            cursor: pointer;
+            transform-style: preserve-3d;
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-3);
+            transform: scaleX(0);
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .project-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-3);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            z-index: -1;
+            border-radius: 20px;
+        }
+
+        .project-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .project-card:hover::after {
+            opacity: 0.1;
+        }
+
+        .project-card:hover {
+            transform: translateY(-25px) scale(1.03) rotateY(5deg);
+            box-shadow: var(--card-shadow-hover);
+            border-color: rgba(0, 212, 255, 0.5);
+        }
+
+        .project-image {
+            position: relative;
+            height: 250px;
+            overflow: hidden;
+        }
+
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            filter: saturate(1.1) contrast(1.05);
+        }
+
+        .project-card:hover .project-image img {
+            transform: scale(1.15);
+            filter: saturate(1.3) contrast(1.2) brightness(1.1);
+        }
+
+        .project-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.8) 0%, rgba(255, 64, 129, 0.8) 100%);
+            opacity: 0;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(5px);
+        }
+
+        .project-card:hover .project-overlay {
+            opacity: 1;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .project-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            color: white;
+            font-size: 1.2rem;
+            text-decoration: none;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+            z-index: 2;
+        }
+
+        .project-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transition: 0.5s;
+        }
+
+        .project-link:hover {
+            background: rgba(255, 255, 255, 0.4);
+            transform: scale(1.2) rotate(10deg);
+            color: white;
+            text-decoration: none;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .project-link:hover::before {
+            left: 100%;
+        }
+
+        .project-content {
+            padding: 30px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .project-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: var(--text-primary);
+            position: relative;
+        }
+
+        .project-title::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: white;
+            border-radius: 3px;
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover .project-title::after {
+            transform: scaleX(1);
+        }
+
+        .project-description {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .tech-tag {
+            padding: 6px 12px;
+            background: rgba(0, 212, 255, 0.1);
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            border-radius: 15px;
+            color: var(--primary-color);
+            font-size: 0.8rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            animation: float 3s ease-in-out infinite;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tech-tag::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
+        }
+
+        .tech-tag:nth-child(2n) {
+            animation-delay: 0.2s;
+        }
+
+        .tech-tag:nth-child(3n) {
+            animation-delay: 0.4s;
+        }
+
+        .tech-tag:hover {
+            background: var(--gradient-3);
+            color: var(--bg-primary);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 212, 255, 0.3);
+        }
+
+        .tech-tag:hover::before {
+            left: 100%;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-3px);
+            }
+        }
+
+        .project-status {
+            display: inline-block;
+            padding: 6px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .status-completed {
+            background: rgba(0, 255, 136, 0.2);
+            color: var(--accent-color);
+            border: 1px solid var(--accent-color);
+        }
+
+        .status-progress {
+            background: rgba(255, 152, 0, 0.2);
+            color: #ff9800;
+            border: 1px solid #ff9800;
+        }
+
+        /* Modal Styles */
+        .project-modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(20px);
+        }
+
+        .modal-content {
+            background: rgba(26, 26, 26, 0.95);
+            margin: 5% auto;
+            padding: 40px;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 800px;
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            position: relative;
+            backdrop-filter: blur(20px);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 25px;
+            font-size: 2rem;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .modal-close:hover {
+            color: var(--primary-color);
+        }
+
+        .modal-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            background: var(--gradient-3);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .modal-description {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text-secondary);
+            margin-bottom: 30px;
+        }
+
+        .modal-features {
+            margin-bottom: 30px;
+        }
+
+        .modal-features h4 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .modal-features ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .modal-features li {
+            padding: 8px 0;
+            color: var(--text-secondary);
+            position: relative;
+            padding-left: 25px;
+        }
+
+        .modal-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--accent-color);
+            font-weight: bold;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--bg-primary);
+            border-top: 1px solid rgba(0, 212, 255, 0.2);
+            padding: 40px 0;
+            text-align: center;
+            margin-top: 80px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .projects-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .filter-buttons {
+                justify-content: center;
+            }
+            
+            .modal-content {
+                margin: 10% auto;
+                padding: 25px;
+                width: 95%;
+            }
+            
+            .project-title {
+                font-size: 1.3rem;
+            }
+            
+            .modal-title {
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .project-content {
+                padding: 20px;
+            }
+            
+            .filter-btn {
+                padding: 10px 20px;
+                font-size: 0.8rem;
+            }
+            
+            .project-title {
+                font-size: 1.2rem;
+            }
+            
+            .project-description {
+                font-size: 0.9rem;
+            }
+            
+            .tech-tag {
+                font-size: 0.7rem;
+                padding: 5px 10px;
+            }
+            
+            .modal-content {
+                padding: 20px;
+            }
+            
+            .modal-title {
+                font-size: 1.3rem;
+            }
+            
+            .modal-description {
+                font-size: 1rem;
+            }
+        }
+        
+        @media (max-width: 400px) {
+            .project-content {
+                padding: 15px;
+            }
+            
+            .project-image {
+                height: 200px;
+            }
+            
+            .project-title {
+                font-size: 1.1rem;
+            }
+            
+            .filter-btn {
+                padding: 8px 15px;
+                font-size: 0.7rem;
+            }
+            
+            .modal-content {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Particles Background -->
+    <div id="particles-js"></div>
+    
+    <!-- Floating Elements for Depth -->
+    <div class="floating-element"></div>
+    <div class="floating-element"></div>
+    <div class="floating-element"></div>
+    
+    <!-- Modern Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="tchicaya.html">{ Mackly.dev }</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="tchicaya.html"><i class="fas fa-home"></i> Accueil</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="competences.html"><i class="fas fa-code"></i> Compétences</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="experience.html"><i class="fas fa-briefcase"></i> Expérience</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="formation.html"><i class="fas fa-graduation-cap"></i> Formation</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="projet-realisation.html"><i class="fas fa-rocket"></i> Projets</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="projects-hero">
+        <div class="container">
+            <h1 class="hero-title">Mes Projets</h1>
+            <p class="hero-subtitle">
+                Découvrez mes réalisations et projets innovants en développement et data science
+            </p>
+        </div>
+    </section>
+
+    <!-- Filter Buttons -->
+    <section class="container">
+        <div class="filter-buttons">
+            <button class="filter-btn active" data-filter="all">Tous</button>
+            <button class="filter-btn" data-filter="web">Web</button>
+            <button class="filter-btn" data-filter="ai">IA & ML</button>
+            <button class="filter-btn" data-filter="data">Data Science</button>
+            <button class="filter-btn" data-filter="mobile">Mobile</button>
+        </div>
+    </section>
+
+    <!-- Projects Grid -->
+    <section class="container">
+        <div class="projects-grid">
+            <!-- Project 1: Full Stack Application -->
+            <div class="project-card" data-category="web">
+                <div class="project-image">
+                    <img src="DALL·E 2024-07-21 23.22.07 - A sleek and modern interface of a dog breed identification application with an image of various dog breeds being identified.webp" alt="Application Full Stack">
+                    <div class="project-overlay">
+                        <div class="project-links">
+                            <a href="#" class="project-link" onclick="openModal('project1')">
+                                <i class="fas fa-eye"></i>
+                            </a>
+                            <a href="#" class="project-link">
+                                <i class="fab fa-github"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">Application Full Stack Moderne</h3>
+                    <p class="project-description">
+                        Application web complète avec backend Python/Flask et frontend React, intégrant une base de données PostgreSQL et des APIs REST.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">React</span>
+                        <span class="tech-tag">Flask</span>
+                        <span class="tech-tag">PostgreSQL</span>
+                    </div>
+                    <span class="project-status status-completed">Terminé</span>
+                </div>
+            </div>
+
+            <!-- Project 2: Data Analytics Dashboard -->
+            <div class="project-card" data-category="data">
+                <div class="project-image">
+                    <img src="DALL·E 2024-07-21 23.22.36 - An analytics dashboard showing social media metrics, including graphs and charts depicting trends and user engagement.webp" alt="Tableau de bord analytique">
+                    <div class="project-overlay">
+                        <div class="project-links">
+                            <a href="#" class="project-link" onclick="openModal('project2')">
+                                <i class="fas fa-eye"></i>
+                            </a>
+                            <a href="#" class="project-link">
+                                <i class="fas fa-chart-line"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">Tableau de Bord Analytique</h3>
+                    <p class="project-description">
+                        Plateforme d'analyse de données avec visualisations interactives, intégrant Pandas, Matplotlib et des sources de données multiples.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Pandas</span>
+                        <span class="tech-tag">Matplotlib</span>
+                        <span class="tech-tag">APIs</span>
+                    </div>
+                    <span class="project-status status-completed">Terminé</span>
+                </div>
+            </div>
+
+            <!-- Project 3: Authentication System -->
+            <div class="project-card" data-category="web">
+                <div class="project-image">
+                    <img src="connexiion.webp" alt="Système d'authentification">
+                    <div class="project-overlay">
+                        <div class="project-links">
+                            <a href="#" class="project-link" onclick="openModal('project3')">
+                                <i class="fas fa-eye"></i>
+                            </a>
+                            <a href="#" class="project-link">
+                                <i class="fab fa-github"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">Système d'Authentification Sécurisé</h3>
+                    <p class="project-description">
+                        Interface d'inscription et de connexion responsive avec sécurité avancée, validation en temps réel et design moderne.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">HTML5</span>
+                        <span class="tech-tag">CSS3</span>
+                        <span class="tech-tag">JavaScript</span>
+                        <span class="tech-tag">Bootstrap</span>
+                    </div>
+                    <span class="project-status status-completed">Terminé</span>
+                </div>
+            </div>
+
+            <!-- Project 4: Task Management App -->
+            <div class="project-card" data-category="web">
+                <div class="project-image">
+                    <img src="rnfhd.webp" alt="Application de gestion de tâches">
+                    <div class="project-overlay">
+                        <div class="project-links">
+                            <a href="#" class="project-link" onclick="openModal('project4')">
+                                <i class="fas fa-eye"></i>
+                            </a>
+                            <a href="#" class="project-link">
+                                <i class="fab fa-github"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">Application de Gestion de Tâches</h3>
+                    <p class="project-description">
+                        Application web intuitive pour la gestion de tâches avec notifications, catégorisation et suivi de progression en temps réel.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Flask</span>
+                        <span class="tech-tag">SQLite</span>
+                        <span class="tech-tag">JavaScript</span>
+                    </div>
+                    <span class="project-status status-completed">Terminé</span>
+                </div>
+            </div>
+
+            <!-- Project 5: Machine Learning Model -->
+            <div class="project-card" data-category="ai">
+                <div class="project-image">
+                    <img src="ia.webp" alt="Modèle d'apprentissage automatique">
+                    <div class="project-overlay">
+                        <div class="project-links">
+                            <a href="#" class="project-link" onclick="openModal('project5')">
+                                <i class="fas fa-eye"></i>
+                            </a>
+                            <a href="#" class="project-link">
+                                <i class="fab fa-github"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">Modèle de Prédiction ML</h3>
+                    <p class="project-description">
+                        Modèle d'apprentissage automatique pour la prédiction de tendances avec Scikit-learn, entraîné sur des données réelles.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Scikit-learn</span>
+                        <span class="tech-tag">Pandas</span>
+                        <span class="tech-tag">Numpy</span>
+                    </div>
+                    <span class="project-status status-completed">Terminé</span>
+                </div>
+            </div>
+
+            <!-- Project 6: Mobile Application -->
+            <div class="project-card" data-category="mobile">
+                <div class="project-image">
+                    <img src="freelance-work-gf245c180c_1280.png" alt="Application mobile">
+                    <div class="project-overlay">
+                        <div class="project-links">
+                            <a href="#" class="project-link" onclick="openModal('project6')">
+                                <i class="fas fa-eye"></i>
+                            </a>
+                            <a href="#" class="project-link">
+                                <i class="fab fa-github"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">Application Mobile Cross-Platform</h3>
+                    <p class="project-description">
+                        Application mobile développée avec Flutter pour Android et iOS, intégrant des APIs et une interface utilisateur moderne.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Flutter</span>
+                        <span class="tech-tag">Dart</span>
+                        <span class="tech-tag">Firebase</span>
+                        <span class="tech-tag">APIs</span>
+                    </div>
+                    <span class="project-status status-completed">Terminé</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Modals -->
+    <!-- Modal 1: Full Stack Application -->
+    <div id="project1" class="project-modal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeModal('project1')">&times;</span>
+            <h2 class="modal-title">Application Full Stack Moderne</h2>
+            <p class="modal-description">
+                Application web complète développée avec un backend Python/Flask et un frontend React. Cette application démontre mes compétences full stack avec une architecture moderne et sécurisée.
+            </p>
+            <div class="modal-features">
+                <h4>Fonctionnalités principales :</h4>
+                <ul>
+                    <li>API RESTful avec Flask et PostgreSQL</li>
+                    <li>Interface utilisateur réactive avec React</li>
+                    <li>Authentification et autorisation avancées</li>
+                    <li>Gestion des données avec SQLAlchemy</li>
+                    <li>Déploiement avec Docker et nginx</li>
+                    <li>Tests automatisés avec Pytest</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 2: Data Analytics Dashboard -->
+    <div id="project2" class="project-modal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeModal('project2')">&times;</span>
+            <h2 class="modal-title">Tableau de Bord Analytique</h2>
+            <p class="modal-description">
+                Plateforme d'analyse de données complète avec visualisations interactives. Cette solution permet d'analyser de grandes quantités de données et de générer des insights exploitables.
+            </p>
+            <div class="modal-features">
+                <h4>Fonctionnalités principales :</h4>
+                <ul>
+                    <li>Collecte de données depuis plusieurs sources</li>
+                    <li>Visualisations interactives avec Matplotlib et Plotly</li>
+                    <li>Tableaux de bord personnalisables</li>
+                    <li>Analyses statistiques avancées</li>
+                    <li>Rapports automatisés et exportation</li>
+                    <li>Interface utilisateur intuitive</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 3: Authentication System -->
+    <div id="project3" class="project-modal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeModal('project3')">&times;</span>
+            <h2 class="modal-title">Système d'Authentification Sécurisé</h2>
+            <p class="modal-description">
+                Interface moderne et sécurisée pour l'inscription et la connexion d'utilisateurs. Intègre les meilleures pratiques de sécurité web avec validation en temps réel.
+            </p>
+            <div class="modal-features">
+                <h4>Fonctionnalités principales :</h4>
+                <ul>
+                    <li>Validation en temps réel côté client</li>
+                    <li>Chiffrement avancé des mots de passe</li>
+                    <li>Authentification à deux facteurs (2FA)</li>
+                    <li>Design responsive et accessible</li>
+                    <li>Récupération de mot de passe sécurisée</li>
+                    <li>Protection contre les attaques CSRF et XSS</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 4: Task Management -->
+    <div id="project4" class="project-modal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeModal('project4')">&times;</span>
+            <h2 class="modal-title">Application de Gestion de Tâches</h2>
+            <p class="modal-description">
+                Application web complète pour la gestion de tâches personnelles et professionnelles. Offre une interface intuitive avec des fonctionnalités avancées de suivi.
+            </p>
+            <div class="modal-features">
+                <h4>Fonctionnalités principales :</h4>
+                <ul>
+                    <li>Création et gestion de tâches avec priorités</li>
+                    <li>Système de catégories et étiquettes</li>
+                    <li>Notifications automatiques et rappels</li>
+                    <li>Suivi de progression avec statistiques</li>
+                    <li>Collaboration en temps réel</li>
+                    <li>Synchronisation multi-appareils</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 5: Machine Learning Model -->
+    <div id="project5" class="project-modal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeModal('project5')">&times;</span>
+            <h2 class="modal-title">Modèle de Prédiction ML</h2>
+            <p class="modal-description">
+                Modèle d'apprentissage automatique pour la prédiction de tendances. Utilise des algorithmes avancés pour analyser les données et fournir des prédictions précises.
+            </p>
+            <div class="modal-features">
+                <h4>Fonctionnalités principales :</h4>
+                <ul>
+                    <li>Prétraitement de données avec Pandas</li>
+                    <li>Modélisation avec Scikit-learn</li>
+                    <li>Validation croisée et optimisation</li>
+                    <li>Visualisation des résultats</li>
+                    <li>API pour l'intégration dans d'autres applications</li>
+                    <li>Documentation complète et tests</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 6: Mobile Application -->
+    <div id="project6" class="project-modal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeModal('project6')">&times;</span>
+            <h2 class="modal-title">Application Mobile Cross-Platform</h2>
+            <p class="modal-description">
+                Application mobile développée avec Flutter pour Android et iOS. Offre une expérience utilisateur fluide sur tous les appareils avec des fonctionnalités avancées.
+            </p>
+            <div class="modal-features">
+                <h4>Fonctionnalités principales :</h4>
+                <ul>
+                    <li>Interface utilisateur moderne avec Flutter</li>
+                    <li>Intégration avec des APIs REST</li>
+                    <li>Système de notifications push</li>
+                    <li>Gestion hors-ligne avec SQLite</li>
+                    <li>Authentification biométrique</li>
+                    <li>Déploiement sur les stores Android et iOS</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Mackly Loick Tchicaya - Développeur Full Stack & Data Scientist. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <!-- AOS (Animate on Scroll) -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+    <!-- Lightbox JS for image gallery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
+    
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <!-- Advanced JavaScript -->
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true,
+            mirror: false
+        });
+
+        // Particles.js configuration
+        particlesJS('particles-js', {
+            particles: {
+                number: {
+                    value: 50,
+                    density: {
+                        enable: true,
+                        value_area: 800
+                    }
+                },
+                color: {
+                    value: ['#00d4ff', '#ff4081', '#00ff88']
+                },
+                shape: {
+                    type: 'circle'
+                },
+                opacity: {
+                    value: 0.3,
+                    random: false
+                },
+                size: {
+                    value: 3,
+                    random: true
+                },
+                line_linked: {
+                    enable: true,
+                    distance: 150,
+                    color: '#00d4ff',
+                    opacity: 0.2,
+                    width: 1
+                },
+                move: {
+                    enable: true,
+                    speed: 3,
+                    direction: 'none',
+                    random: false,
+                    straight: false,
+                    out_mode: 'out',
+                    bounce: false
+                }
+            },
+            interactivity: {
+                detect_on: 'canvas',
+                events: {
+                    onhover: {
+                        enable: true,
+                        mode: 'repulse'
+                    },
+                    onclick: {
+                        enable: true,
+                        mode: 'push'
+                    },
+                    resize: true
+                }
+            },
+            retina_detect: true
+        });
+
+        // GSAP Animations
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Project card animations
+        function animateProjectCards() {
+            // Simplified animation - just ensure all cards are visible
+            const projectCards = document.querySelectorAll('.project-card');
+            projectCards.forEach(card => {
+                card.style.display = 'block';
+                card.style.opacity = '1';
+            });
+        }
+
+        // Filter functionality
+        function initializeFilters() {
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const projectCards = document.querySelectorAll('.project-card');
+
+            filterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    // Remove active class from all buttons
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    // Add active class to clicked button
+                    button.classList.add('active');
+
+                    const filterValue = button.getAttribute('data-filter');
+
+                    projectCards.forEach(card => {
+                        const cardCategory = card.getAttribute('data-category');
+                        
+                        if (filterValue === 'all' || cardCategory === filterValue) {
+                            card.style.display = 'block';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                });
+            });
+        }
+
+        // Modal functionality
+        function openModal(modalId) {
+            const modal = document.getElementById(modalId);
+            modal.style.display = 'block';
+            
+            // Animate modal appearance
+            gsap.fromTo(modal.querySelector('.modal-content'), 
+                { scale: 0.7, opacity: 0 },
+                { 
+                    duration: 0.5, 
+                    scale: 1, 
+                    opacity: 1, 
+                    ease: 'back.out(1.7)' 
+                }
+            );
+            
+            // Prevent body scroll
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal(modalId) {
+            const modal = document.getElementById(modalId);
+            
+            // Animate modal disappearance
+            gsap.to(modal.querySelector('.modal-content'), {
+                duration: 0.3,
+                scale: 0.7,
+                opacity: 0,
+                ease: 'power2.in',
+                onComplete: () => {
+                    modal.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                }
+            });
+        }
+
+        // Close modal when clicking outside
+        window.addEventListener('click', function(event) {
+            const modals = document.querySelectorAll('.project-modal');
+            modals.forEach(modal => {
+                if (event.target === modal) {
+                    const modalId = modal.getAttribute('id');
+                    closeModal(modalId);
+                }
+            });
+        });
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                const openModal = document.querySelector('.project-modal[style*="block"]');
+                if (openModal) {
+                    const modalId = openModal.getAttribute('id');
+                    closeModal(modalId);
+                }
+            }
+        });
+
+        // Initialize all animations and functionality when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(() => {
+                animateProjectCards();
+                initializeFilters();
+            }, 500);
+        });
+
+        // Interactive hover effects
+        $(document).ready(function() {
+            // Project card hover effects
+            $('.project-card').hover(
+                function() {
+                    $(this).addClass('animate__animated animate__pulse');
+                },
+                function() {
+                    $(this).removeClass('animate__animated animate__pulse');
+                }
+            );
+
+            // Filter button hover effects
+            $('.filter-btn').hover(
+                function() {
+                    if (!$(this).hasClass('active')) {
+                        $(this).addClass('animate__animated animate__tada');
+                    }
+                },
+                function() {
+                    $(this).removeClass('animate__animated animate__tada');
+                }
+            );
+
+            // Smooth scrolling for navigation
+            $('.nav-link').click(function(e) {
+                const href = $(this).attr('href');
+                if (href.startsWith('#')) {
+                    e.preventDefault();
+                    const target = $(href);
+                    if (target.length) {
+                        $('html, body').animate({
+                            scrollTop: target.offset().top - 80
+                        }, 1000);
+                    }
+                }
+            });
+
+            // Mobile menu close on link click
+            $('.navbar-nav .nav-link').on('click', function() {
+                $('.navbar-collapse').collapse('hide');
+            });
+
+            // Add loading animation
+            $('body').addClass('loaded');
+        });
+
+        // Navbar scroll effect
+        $(window).scroll(function() {
+            if ($(this).scrollTop() > 100) {
+                $('.navbar').addClass('scrolled');
+            } else {
+                $('.navbar').removeClass('scrolled');
+            }
+        });
+
+        // Parallax effect for hero section
+        $(window).scroll(function() {
+            var scrolled = $(this).scrollTop();
+            var parallax = $('.projects-hero');
+            var speed = scrolled * 0.3;
+            parallax.css('transform', 'translateY(' + speed + 'px)');
+        });
+
+        // Project card tilt effect
+        $('.project-card').hover(
+            function(e) {
+                const card = $(this);
+                const rect = this.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                const rotateX = (y - centerY) / 10;
+                const rotateY = (centerX - x) / 10;
+                
+                card.css({
+                    'transform': `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.05, 1.05, 1.05)`
+                });
+            },
+            function() {
+                $(this).css({
+                    'transform': 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)'
+                });
+            }
+        );
+
+        // Add global functions to window for modal functionality
+        window.openModal = openModal;
+        window.closeModal = closeModal;
+    </script>
+</body>
+
+</html>
