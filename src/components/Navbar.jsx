@@ -21,32 +21,34 @@ const Navbar = ({ activeSection }) => {
     { name: 'Contact', href: '#contact', id: 'contact' },
   ]
 
+  const navStyles = {
+    position: 'fixed',
+    top: 0,
+    left: 0,
+    width: '100%',
+    padding: scrolled ? '15px 8%' : '30px 8%',
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    zIndex: 100,
+    backgroundColor: scrolled || isOpen ? 'rgba(5, 5, 5, 0.9)' : 'transparent',
+    backdropFilter: scrolled || isOpen ? 'blur(15px)' : 'none',
+    borderBottom: scrolled || isOpen ? '1px solid rgba(255, 255, 255, 0.05)' : 'none',
+    transition: 'all 0.4s cubic-bezier(0.22, 1, 0.36, 1)',
+  }
+
+  const logoStyles = {
+    fontSize: '1.4rem',
+    fontWeight: 800,
+    letterSpacing: '-1px',
+    cursor: 'pointer',
+    zIndex: 101,
+  }
+
   return (
-    <nav
-      style={{
-        position: 'fixed',
-        top: 0,
-        left: 0,
-        width: '100%',
-        padding: scrolled ? '15px 8%' : '30px 8%',
-        display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        zIndex: 100,
-        backgroundColor: scrolled || isOpen ? 'rgba(5, 5, 5, 0.9)' : 'transparent',
-        backdropFilter: scrolled || isOpen ? 'blur(15px)' : 'none',
-        borderBottom: scrolled || isOpen ? '1px solid rgba(255, 255, 255, 0.05)' : 'none',
-        transition: 'all 0.4s cubic-bezier(0.22, 1, 0.36, 1)',
-      }}
-    >
+    <nav style={navStyles}>
       <div
-        style={{
-          fontSize: '1.4rem',
-          fontWeight: 800,
-          letterSpacing: '-1px',
-          cursor: 'pointer',
-          zIndex: 101
-        }}
+        style={logoStyles}
         onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
       >
         <span style={{ color: 'var(--accent-color)' }}>MACKLY</span>.DEV
@@ -69,8 +71,6 @@ const Navbar = ({ activeSection }) => {
               transition: 'all 0.3s ease',
               position: 'relative'
             }}
-            onMouseOver={(e) => e.target.style.opacity = 1}
-            onMouseOut={(e) => e.target.style.opacity = (activeSection === link.id ? 1 : 0.5)}
           >
             {link.name}
             {activeSection === link.id && (
@@ -87,7 +87,7 @@ const Navbar = ({ activeSection }) => {
         ))}
       </div>
 
-      {/* Mobile Menu Toggle (Simplified indicator) */}
+      {/* Mobile Menu Toggle */}
       <div
         className="mobile-toggle"
         onClick={() => setIsOpen(!isOpen)}

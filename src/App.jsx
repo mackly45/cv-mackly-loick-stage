@@ -9,7 +9,7 @@ gsap.registerPlugin(ScrollTrigger)
 
 const SectionTitle = ({ children }) => {
   return (
-    <div className="section-title-wrapper" style={{ marginBottom: '60px', overflow: 'hidden' }}>
+    <div className="section-title-wrapper">
       <h2 className="gradient-text reveal-text" style={{ fontSize: 'clamp(2.5rem, 6vw, 4rem)', fontWeight: 800 }}>
         {children}
       </h2>
@@ -32,29 +32,18 @@ function App() {
     // Scroll Animations
     const sections = document.querySelectorAll('section')
     sections.forEach(section => {
-      // Reveal section
+      // Reveal items
       gsap.from(section.querySelectorAll('.glass-card, .project-card, .reveal-text'), {
         scrollTrigger: {
           trigger: section,
-          start: 'top 80%',
+          start: 'top 85%',
           toggleActions: 'play none none reverse'
         },
         y: 40,
         opacity: 0,
-        duration: 1,
+        duration: 0.8,
         stagger: 0.1,
-        ease: 'power3.out'
-      })
-
-      // Animate line in title
-      gsap.from(section.querySelector('.title-line'), {
-        scrollTrigger: {
-          trigger: section,
-          start: 'top 80%'
-        },
-        width: 0,
-        duration: 1.5,
-        ease: 'expo.out'
+        ease: 'power2.out'
       })
 
       // Active Section Tracking
@@ -67,18 +56,20 @@ function App() {
       })
     })
 
-    // Hero Specific
-    gsap.from('.hero-content > *', {
+    // Hero Entry Animation
+    const heroTl = gsap.timeline()
+    heroTl.from('.hero-content > *', {
       y: 30,
       opacity: 0,
-      duration: 1.2,
-      stagger: 0.2,
-      ease: 'power4.out',
-      delay: 0.5
+      duration: 1,
+      stagger: 0.15,
+      ease: 'expo.out',
+      delay: 0.3
     })
 
     return () => {
       lenis.destroy()
+      ScrollTrigger.getAll().forEach(t => t.kill())
     }
   }, [])
 
@@ -119,21 +110,21 @@ function App() {
         {/* HOME */}
         <section id="home" className="hero">
           <div className="hero-content" style={{ maxWidth: '800px' }}>
-            <h3 style={{ color: 'var(--accent-color)', fontFamily: 'var(--font-mono)', marginBottom: '20px', fontSize: '1.2rem' }}>
+            <h3 style={{ color: 'var(--accent-color)', fontFamily: 'var(--font-mono)', marginBottom: '25px', fontSize: '1.2rem', fontWeight: 600 }}>
               &gt; Bonjour, je suis
             </h3>
-            <h1 style={{ fontSize: 'clamp(3.5rem, 9vw, 7rem)', lineHeight: 0.9, marginBottom: '20px' }} className="gradient-text">
+            <h1 style={{ fontSize: 'clamp(3.5rem, 9vw, 7.5rem)', lineHeight: 0.85, marginBottom: '25px' }} className="gradient-text">
               Mackly Loick<br />Tchicaya
             </h1>
-            <h2 style={{ fontSize: 'clamp(1.5rem, 4vw, 2.5rem)', fontWeight: 400, opacity: 0.8, marginBottom: '30px', letterSpacing: '-0.5px' }}>
+            <h2 style={{ fontSize: 'clamp(1.5rem, 4vw, 2.8rem)', fontWeight: 500, color: '#fff', opacity: 0.95, marginBottom: '35px', letterSpacing: '-0.5px' }}>
               Full Stack Architect & Data Scientist.
             </h2>
-            <p style={{ fontSize: '1.15rem', opacity: 0.6, lineHeight: 1.8, marginBottom: '45px', maxWidth: '600px' }}>
+            <p style={{ fontSize: '1.2rem', color: '#fff', opacity: 0.8, lineHeight: 1.8, marginBottom: '50px', maxWidth: '650px' }}>
               Concepteur de solutions technologiques haut de gamme, fusionnant design moderne, performance backend et intelligence artificielle.
             </p>
             <div style={{ display: 'flex', gap: '25px', flexWrap: 'wrap' }}>
               <a href="#projects" className="tesla-btn">Explorer mes projets</a>
-              <a href="#contact" className="tesla-btn" style={{ borderColor: 'rgba(255,255,255,0.1)', color: 'white' }}>Me contacter</a>
+              <a href="#contact" className="tesla-btn" style={{ borderColor: 'rgba(255,255,255,0.2)', color: '#fff' }}>Me contacter</a>
             </div>
           </div>
         </section>
@@ -141,15 +132,15 @@ function App() {
         {/* SKILLS */}
         <section id="skills">
           <SectionTitle>Compétences</SectionTitle>
-          <div className="skills-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '25px', width: '100%' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '25px', width: '100%' }}>
             {skillsData.map((skill, idx) => (
               <div key={idx} className="glass-card">
                 <h3 style={{ color: 'var(--accent-color)', marginBottom: '20px', fontFamily: 'var(--font-mono)', fontSize: '1.2rem' }}>
                   // {skill.category}
                 </h3>
-                <ul style={{ listStyle: 'none', opacity: 0.7 }}>
+                <ul style={{ listStyle: 'none' }}>
                   {skill.items.map((item, i) => (
-                    <li key={i} style={{ marginBottom: '10px', fontSize: '0.95rem' }}>• {item}</li>
+                    <li key={i} style={{ marginBottom: '10px', fontSize: '1rem', opacity: 0.8 }}>• {item}</li>
                   ))}
                 </ul>
               </div>
@@ -163,11 +154,11 @@ function App() {
           <div className="timeline" style={{ borderLeft: '1px solid var(--glass-border)', paddingLeft: '40px', marginLeft: '10px' }}>
             {experiences.map((exp, idx) => (
               <div key={idx} className="glass-card" style={{ marginBottom: '30px', position: 'relative' }}>
-                <div style={{ position: 'absolute', left: '-51px', top: '40px', width: '20px', height: '20px', background: 'var(--bg-color)', border: '2px solid var(--accent-color)', borderRadius: '50%' }}></div>
-                <span style={{ color: 'var(--accent-color)', fontFamily: 'var(--font-mono)', fontSize: '0.9rem' }}>{exp.date}</span>
-                <h3 style={{ marginTop: '10px', marginBottom: '5px' }}>{exp.title}</h3>
-                <h4 style={{ opacity: 0.5, fontWeight: 500, marginBottom: '20px', fontSize: '1rem' }}>{exp.company}</h4>
-                <p style={{ opacity: 0.7, lineHeight: 1.6 }}>{exp.desc}</p>
+                <div style={{ position: 'absolute', left: '-51px', top: '40px', width: '20px', height: '20px', background: 'var(--bg-color)', border: '3px solid var(--accent-color)', borderRadius: '50%' }}></div>
+                <span style={{ color: 'var(--accent-color)', fontFamily: 'var(--font-mono)', fontSize: '1rem', fontWeight: 600 }}>{exp.date}</span>
+                <h3 style={{ marginTop: '10px', marginBottom: '5px', color: '#fff' }}>{exp.title}</h3>
+                <h4 style={{ opacity: 0.7, fontWeight: 500, marginBottom: '20px', fontSize: '1.1rem' }}>{exp.company}</h4>
+                <p style={{ opacity: 0.85, lineHeight: 1.7 }}>{exp.desc}</p>
               </div>
             ))}
           </div>
@@ -176,13 +167,13 @@ function App() {
         {/* EDUCATION */}
         <section id="education">
           <SectionTitle>Formation</SectionTitle>
-          <div className="skills-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '25px', width: '100%' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '25px', width: '100%' }}>
             {education.map((edu, idx) => (
               <div key={idx} className="glass-card">
-                <span style={{ color: 'var(--accent-color)', fontFamily: 'var(--font-mono)', fontSize: '0.85rem' }}>{edu.date}</span>
-                <h3 style={{ marginTop: '10px', marginBottom: '5px' }}>{edu.title}</h3>
-                <h4 style={{ opacity: 0.5, fontWeight: 500, fontSize: '0.95rem', marginBottom: '15px' }}>{edu.school}</h4>
-                <p style={{ opacity: 0.6, fontSize: '0.9rem', lineHeight: 1.6 }}>{edu.desc}</p>
+                <span style={{ color: 'var(--accent-color)', fontFamily: 'var(--font-mono)', fontSize: '0.95rem' }}>{edu.date}</span>
+                <h3 style={{ marginTop: '10px', marginBottom: '5px', color: '#fff' }}>{edu.title}</h3>
+                <h4 style={{ opacity: 0.7, fontWeight: 500, fontSize: '1rem', marginBottom: '15px' }}>{edu.school}</h4>
+                <p style={{ opacity: 0.8, fontSize: '1rem', lineHeight: 1.6 }}>{edu.desc}</p>
               </div>
             ))}
           </div>
@@ -194,15 +185,16 @@ function App() {
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(380px, 1fr))', gap: '30px', width: '100%' }}>
             {projects.map((proj, idx) => (
               <div key={idx} className="glass-card project-card" style={{ padding: '0', overflow: 'hidden' }}>
-                <div style={{ height: '220px', background: 'rgba(255,255,255,0.03)', borderBottom: '1px solid var(--glass-border)', position: 'relative' }}>
-                  <div style={{ position: 'absolute', top: '20px', right: '20px', padding: '5px 15px', borderRadius: '20px', fontSize: '0.7rem', background: 'rgba(0,212,255,0.1)', color: 'var(--accent-color)', border: '1px solid var(--accent-color)' }}>
+                <div style={{ height: '240px', background: 'rgba(255,255,255,0.02)', borderBottom: '1px solid var(--glass-border)', position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                  <div style={{ fontSize: '3rem', opacity: 0.1 }}>{proj.title[0]}</div>
+                  <div style={{ position: 'absolute', top: '20px', right: '20px', padding: '6px 16px', borderRadius: '2px', fontSize: '0.75rem', fontWeight: 700, background: 'rgba(0,229,255,0.1)', color: 'var(--accent-color)', border: '1px solid var(--accent-color)' }}>
                     {proj.status}
                   </div>
                 </div>
-                <div style={{ padding: '30px' }}>
-                  <span style={{ fontSize: '0.8rem', opacity: 0.5, fontFamily: 'var(--font-mono)' }}>{proj.tech}</span>
-                  <h3 style={{ margin: '10px 0' }}>{proj.title}</h3>
-                  <p style={{ opacity: 0.7, fontSize: '0.95rem', lineHeight: 1.6 }}>{proj.desc}</p>
+                <div style={{ padding: '35px' }}>
+                  <span style={{ fontSize: '0.85rem', color: 'var(--accent-color)', fontFamily: 'var(--font-mono)', fontWeight: 600 }}>{proj.tech}</span>
+                  <h3 style={{ margin: '12px 0', color: '#fff' }}>{proj.title}</h3>
+                  <p style={{ opacity: 0.8, fontSize: '1rem', lineHeight: 1.7 }}>{proj.desc}</p>
                 </div>
               </div>
             ))}
@@ -212,36 +204,35 @@ function App() {
         {/* CONTACT */}
         <section id="contact">
           <SectionTitle>Contact</SectionTitle>
-          <div className="glass-card" style={{ maxWidth: '800px', margin: '0 0' }}>
-            <h3 style={{ marginBottom: '30px' }}>Discutons de votre prochain projet</h3>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '40px' }}>
+          <div className="glass-card" style={{ maxWidth: '900px' }}>
+            <h3 style={{ marginBottom: '35px', fontSize: '2rem' }}>Discutons de votre prochain projet</h3>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '50px' }}>
               <div>
-                <p style={{ opacity: 0.6, lineHeight: 1.8, marginBottom: '30px' }}>
-                  Je suis toujours ouvert à de nouvelles opportunités de collaboration, que ce soit pour du développement full stack ou des missions de data science.
+                <p style={{ opacity: 0.85, fontSize: '1.1rem', lineHeight: 1.8, marginBottom: '40px' }}>
+                  Je suis disponible pour des opportunités de haut niveau en architecture logicielle et data science.
                 </p>
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
-                  <a href="mailto:contact@mackly.dev" style={{ color: 'var(--accent-color)', textDecoration: 'none', fontWeight: 500 }}>contact@mackly.dev</a>
-                  <div style={{ display: 'flex', gap: '20px', marginTop: '10px' }}>
-                    <a href="#" style={{ color: 'white', opacity: 0.5 }}>LinkedIn</a>
-                    <a href="#" style={{ color: 'white', opacity: 0.5 }}>GitHub</a>
-                    <a href="#" style={{ color: 'white', opacity: 0.5 }}>Twitter</a>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+                  <a href="mailto:contact@mackly.dev" style={{ color: 'var(--accent-color)', textDecoration: 'none', fontWeight: 700, fontSize: '1.2rem' }}>contact@mackly.dev</a>
+                  <div style={{ display: 'flex', gap: '25px', marginTop: '15px' }}>
+                    <a href="#" style={{ color: '#fff', opacity: 0.7, textDecoration: 'none', fontWeight: 600 }}>LinkedIn</a>
+                    <a href="#" style={{ color: '#fff', opacity: 0.7, textDecoration: 'none', fontWeight: 600 }}>GitHub</a>
                   </div>
                 </div>
               </div>
-              <form style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
-                <input type="text" placeholder="Nom" style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid var(--glass-border)', padding: '15px', borderRadius: '8px', color: 'white', outline: 'none' }} />
-                <input type="email" placeholder="Email" style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid var(--glass-border)', padding: '15px', borderRadius: '8px', color: 'white', outline: 'none' }} />
-                <textarea placeholder="Message" rows="4" style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid var(--glass-border)', padding: '15px', borderRadius: '8px', color: 'white', outline: 'none', resize: 'none' }}></textarea>
-                <button type="button" className="tesla-btn" style={{ width: '100%' }}>Envoyer le message</button>
+              <form style={{ display: 'flex', flexDirection: 'column', gap: '25px' }}>
+                <input type="text" placeholder="NOM COMPLET" style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid var(--glass-border)', padding: '18px', borderRadius: '2px', color: '#fff', outline: 'none', fontFamily: 'var(--font-mono)' }} />
+                <input type="email" placeholder="EMAIL PROFESSIONNEL" style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid var(--glass-border)', padding: '18px', borderRadius: '2px', color: '#fff', outline: 'none', fontFamily: 'var(--font-mono)' }} />
+                <textarea placeholder="VOTRE MESSAGE" rows="5" style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid var(--glass-border)', padding: '18px', borderRadius: '2px', color: '#fff', outline: 'none', resize: 'none', fontFamily: 'var(--font-mono)' }}></textarea>
+                <button type="button" className="tesla-btn" style={{ width: '100%' }}>Envoyer l'infusion technologique</button>
               </form>
             </div>
           </div>
         </section>
       </main>
 
-      <footer style={{ padding: '80px 10%', borderTop: '1px solid var(--glass-border)', textAlign: 'center' }}>
-        <p style={{ opacity: 0.3, fontSize: '0.85rem' }}>
-          CONSTRUIT AVEC PASSION PAR MACKLY LOICK TCHICAYA &bull; {new Date().getFullYear()}
+      <footer style={{ padding: '100px 10%', borderTop: '1px solid var(--glass-border)', textAlign: 'center' }}>
+        <p style={{ opacity: 0.4, fontSize: '0.9rem', letterSpacing: '1px' }}>
+          &copy; {new Date().getFullYear()} MACKLY LOICK TCHICAYA &bull; ARCHITECTE FULL STACK & DATA SCIENTIST
         </p>
       </footer>
     </div>
