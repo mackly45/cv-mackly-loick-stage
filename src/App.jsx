@@ -196,10 +196,10 @@ function App() {
   ]
 
   const projects = [
-    { title: 'Application Full Stack', tech: 'Python / React / Flask', desc: 'Architecture moderne avec intégration de base de données PostgreSQL.', status: 'Terminé' },
-    { title: 'Dashboard Analytique', tech: 'Python / Pandas / Plotly', desc: 'Visualisation de données interactive de haute précision.', status: 'Terminé' },
-    { title: 'App Mobile Cross-Platform', tech: 'Flutter / Firebase', desc: 'Application native fluide pour iOS et Android.', status: 'Terminé' },
-    { title: 'Modèle de Prédiction ML', tech: 'Scikit-learn / Numpy', desc: 'Algorithme d\'analyse prédictive sur données réelles.', status: 'En cours' },
+    { title: 'Application Full Stack', tech: 'Python / React / Flask', desc: 'Architecture moderne avec intégration de base de données PostgreSQL.', status: 'Terminé', image: '/cv-mackly-loick-stage/assets/images/project1.png' },
+    { title: 'Dashboard Analytique', tech: 'Python / Pandas / Plotly', desc: 'Visualisation de données interactive de haute précision.', status: 'Terminé', image: '/cv-mackly-loick-stage/assets/images/project2.png' },
+    { title: 'App Mobile Cross-Platform', tech: 'Flutter / Firebase', desc: 'Application native fluide pour iOS et Android.', status: 'Terminé', image: '/cv-mackly-loick-stage/assets/images/project1.png' }, // Reusing for now
+    { title: 'Modèle de Prédiction ML', tech: 'Scikit-learn / Numpy', desc: 'Algorithme d\'analyse prédictive sur données réelles.', status: 'En cours', image: '/cv-mackly-loick-stage/assets/images/project2.png' }, // Reusing for now
   ]
 
   return (
@@ -291,8 +291,12 @@ function App() {
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(380px, 1fr))', gap: '30px', width: '100%' }}>
             {projects.map((proj, idx) => (
               <div key={idx} className="glass-card project-card" style={{ padding: '0', overflow: 'hidden' }}>
-                <div style={{ height: '240px', background: 'rgba(255,255,255,0.02)', borderBottom: '1px solid var(--glass-border)', position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                  <div style={{ fontSize: '3rem', opacity: 0.1 }}>{proj.title[0]}</div>
+                <div style={{ height: '240px', background: 'rgba(255,255,255,0.02)', borderBottom: '1px solid var(--glass-border)', position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden' }}>
+                  {proj.image ? (
+                    <img src={proj.image} alt={proj.title} style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.6, transition: '0.5s' }} className="project-image" />
+                  ) : (
+                    <div style={{ fontSize: '3rem', opacity: 0.1 }}>{proj.title[0]}</div>
+                  )}
                   <div style={{ position: 'absolute', top: '20px', right: '20px', padding: '6px 16px', borderRadius: '2px', fontSize: '0.75rem', fontWeight: 700, background: 'rgba(0,229,255,0.1)', color: 'var(--accent-color)', border: '1px solid var(--accent-color)' }}>
                     {proj.status}
                   </div>
